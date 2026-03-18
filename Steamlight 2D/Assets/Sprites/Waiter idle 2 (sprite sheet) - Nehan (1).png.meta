@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: b74f01a9b6e682e4d92a8995698cf171
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7117276962098765688
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_0
+  - first:
+      213: -8305147562758025126
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_1
+  - first:
+      213: -8647331240013944303
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_2
+  - first:
+      213: -661058163628278745
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_3
+  - first:
+      213: -8737419757082902178
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_4
+  - first:
+      213: -5698227533756109035
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_5
+  - first:
+      213: -8649603353168807313
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_6
+  - first:
+      213: 5804084191516765799
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_7
+  - first:
+      213: 3035785543846087747
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_8
+  - first:
+      213: -1928324317821497936
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_9
+  - first:
+      213: 6450229718917949806
+    second: Waiter idle 2 (sprite sheet) - Nehan (1)_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 86
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_0
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87fd7f520b5a5c260800000000000000
+      internalID: 7117276962098765688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_1
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a505b925b403ebc80800000000000000
+      internalID: -8305147562758025126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11aa4df7d028ef780800000000000000
+      internalID: -8647331240013944303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c70154a1373d6f0800000000000000
+      internalID: -661058163628278745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_4
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e51089516037eb680800000000000000
+      internalID: -8737419757082902178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_5
+      rect:
+        serializedVersion: 2
+        x: 2659
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51fed11af34dbe0b0800000000000000
+      internalID: -5698227533756109035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_6
+      rect:
+        serializedVersion: 2
+        x: 3159
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a785ee39f66f780800000000000000
+      internalID: -8649603353168807313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_7
+      rect:
+        serializedVersion: 2
+        x: 3659
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76e21d122df3c8050800000000000000
+      internalID: 5804084191516765799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_8
+      rect:
+        serializedVersion: 2
+        x: 4159
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c463b2ed6412a20800000000000000
+      internalID: 3035785543846087747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_9
+      rect:
+        serializedVersion: 2
+        x: 4659
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bd8088ef373d35e0800000000000000
+      internalID: -1928324317821497936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waiter idle 2 (sprite sheet) - Nehan (1)_10
+      rect:
+        serializedVersion: 2
+        x: 5159
+        y: 89
+        width: 192
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e69a5cb21c1d38950800000000000000
+      internalID: 6450229718917949806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Waiter idle 2 (sprite sheet) - Nehan (1)_0: 7117276962098765688
+      Waiter idle 2 (sprite sheet) - Nehan (1)_1: -8305147562758025126
+      Waiter idle 2 (sprite sheet) - Nehan (1)_10: 6450229718917949806
+      Waiter idle 2 (sprite sheet) - Nehan (1)_2: -8647331240013944303
+      Waiter idle 2 (sprite sheet) - Nehan (1)_3: -661058163628278745
+      Waiter idle 2 (sprite sheet) - Nehan (1)_4: -8737419757082902178
+      Waiter idle 2 (sprite sheet) - Nehan (1)_5: -5698227533756109035
+      Waiter idle 2 (sprite sheet) - Nehan (1)_6: -8649603353168807313
+      Waiter idle 2 (sprite sheet) - Nehan (1)_7: 5804084191516765799
+      Waiter idle 2 (sprite sheet) - Nehan (1)_8: 3035785543846087747
+      Waiter idle 2 (sprite sheet) - Nehan (1)_9: -1928324317821497936
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
