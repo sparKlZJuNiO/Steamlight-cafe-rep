@@ -1575,14 +1575,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.91013765, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2936903054445640016, guid: 4268baa4c54ee7e44b8530d709bcd391, type: 3}
+  m_Sprite: {fileID: -8996702994069670287, guid: f786e5d535797414bafcd63344f9b900, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2511,6 +2511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 285102990}
   speed: 0.05
+  uiAnim: {fileID: 1572265920}
   canvas: {fileID: 1851279746}
   pauseScreen: {fileID: 587939772}
   pauseButton: {fileID: 174329863}
@@ -3195,8 +3196,8 @@ GameObject:
   - component: {fileID: 560339572}
   - component: {fileID: 560339571}
   m_Layer: 0
-  m_Name: new waiter (1) (1)_0
-  m_TagString: Untagged
+  m_Name: Waiter NPC
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3286,7 +3287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560339570}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.5, y: -6.44, z: -2.83}
   m_LocalScale: {x: 3.5731108, y: 3.5731108, z: 3.5731108}
   m_ConstrainProportionsScale: 0
@@ -3599,8 +3600,8 @@ GameObject:
   - component: {fileID: 754227282}
   - component: {fileID: 754227281}
   m_Layer: 0
-  m_Name: lady 1 (1)_0
-  m_TagString: Untagged
+  m_Name: Lady NPC
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3690,7 +3691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754227280}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.74, y: -6.72, z: -0.6}
   m_LocalScale: {x: 4.0884233, y: 4.0884233, z: 4.0884233}
   m_ConstrainProportionsScale: 0
@@ -7767,6 +7768,7 @@ GameObject:
   - component: {fileID: 1572265919}
   - component: {fileID: 1572265918}
   - component: {fileID: 1572265917}
+  - component: {fileID: 1572265920}
   m_Layer: 5
   m_Name: PauseButton2
   m_TagString: Untagged
@@ -7869,7 +7871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2936903054445640016, guid: 4268baa4c54ee7e44b8530d709bcd391, type: 3}
+  m_Sprite: {fileID: -8996702994069670287, guid: f786e5d535797414bafcd63344f9b900, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7887,6 +7889,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572265915}
   m_CullTransparentMesh: 1
+--- !u!95 &1572265920
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572265915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f85068dc7ab56745a3050eb853a21c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1590531153
 GameObject:
   m_ObjectHideFlags: 0
@@ -10660,6 +10684,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 754227283}
+  - {fileID: 560339573}
   - {fileID: 619394802}
   - {fileID: 1159598765}
   - {fileID: 143910510}
@@ -10703,8 +10729,6 @@ SceneRoots:
   - {fileID: 1550040022}
   - {fileID: 2037496294}
   - {fileID: 285102988}
-  - {fileID: 754227283}
-  - {fileID: 560339573}
   - {fileID: 949976914}
   - {fileID: 1059804819}
   - {fileID: 66074390}
