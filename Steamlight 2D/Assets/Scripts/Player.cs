@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
    bool isMoving;
    bool isPlaying = false;
     bool isPaused = false;
+    [SerializeField] GameObject filter;
     GameObject[] NPCs;
 
     [Header("Animator")]
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     void Start() // Best for initializing variables
     {
         NPCs = GameObject.FindGameObjectsWithTag("NPC");
+        filter.SetActive(true);
     }
 
     // Update is called once per frame
@@ -48,21 +50,21 @@ public class Player : MonoBehaviour
 
         if (moveInput.x > 0)
         {
-            Debug.Log("Right");
+           // Debug.Log("Right");
             playerAnim.SetBool("sideways", true);
             playerAnim.SetBool("forward", false);
             this.GetComponent<SpriteRenderer>().flipX = true;
         }
         if (moveInput.x < 0)
         {
-            Debug.Log("Left");
+          //  Debug.Log("Left");
             playerAnim.SetBool("sideways", true);
             playerAnim.SetBool("forward", false);
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
         if (-moveInput.y > 0)
         {
-            Debug.Log("Below");
+           // Debug.Log("Below");
             playerAnim.SetBool("sideways", false);
             playerAnim.SetBool("forward", true);
             this.GetComponent<SpriteRenderer>().flipX = false;

@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.387
+    m_Value: 0.423
   response:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.628
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -40,13 +40,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.9726782, y: 1, z: 0.9523453, w: -0.016722407}
   gamma:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.8937545, z: 0.940795, w: -0.06688952}
   gain:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 0.93443424, z: 0.96505755, w: 0.013003703}
+    m_OverrideState: 1
+    m_Value: {x: 0.99051976, y: 1, z: 0.74989647, w: 0.016722403}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -31.8
+    m_Value: -11
   tint:
     m_OverrideState: 1
-    m_Value: 12.4
+    m_Value: -0
