@@ -6,17 +6,19 @@ public class Dialogue : MonoBehaviour
 {
     bool value = false;
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] GameObject textObject;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NPC"))
+        if (collision.CompareTag("Trigger"))
         {
             value = true;
+            textObject.SetActive(true);
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("NPC"))
+        if (collision.CompareTag("Trigger"))
         {
             value = true;
         }
@@ -24,9 +26,10 @@ public class Dialogue : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("NPC"))
+        if (collision.CompareTag("Trigger"))
         {
             value = false;
+            textObject.SetActive(false);
         }
     }
     void Start()
@@ -45,7 +48,7 @@ public class Dialogue : MonoBehaviour
         if (value == true)
         {
             {
-                Debug.Log("hERE");
+              //  Debug.Log("hERE");
                 text.text = "Hi";
             }
         }
