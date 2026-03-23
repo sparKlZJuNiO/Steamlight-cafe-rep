@@ -4,9 +4,12 @@ using UnityEngine.InputSystem;
 
 public class Dialogue : MonoBehaviour
 {
-    bool value = false;
+    public bool value = false;
+
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] GameObject textObject;
+   public GameObject[] NPCs;
+    bool tick;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Trigger"))
@@ -14,6 +17,7 @@ public class Dialogue : MonoBehaviour
             value = true;
             textObject.SetActive(true);
         }
+      
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -34,18 +38,24 @@ public class Dialogue : MonoBehaviour
     }
     void Start()
     {
-        
+     
     }
 
   
     void Update()
     {
-      
+      foreach(GameObject gameObject in NPCs)
+        {
+           if (gameObject.GetComponent<CharacterMove>().npcValue == true)
+            {
+                tick = true;
+            }
+        }
     }
 
     public void Interact(InputAction.CallbackContext ctx)
     {
-        if (value == true)
+        if (value == true && tick == true)
         {
             {
               //  Debug.Log("hERE");
