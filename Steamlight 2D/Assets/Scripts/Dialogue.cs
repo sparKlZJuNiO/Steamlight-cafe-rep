@@ -59,7 +59,7 @@ public class Dialogue : MonoBehaviour
         {
             {
               //  Debug.Log("hERE");
-                text.text = "Hi";
+                text.text = "Can I have a blue cappunchino?";
             }
         }
     }

@@ -10,6 +10,7 @@ public class CharacterMove : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
    [SerializeField] float timer;
    public bool npcValue = false;
+    GameObject plr;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,26 +22,32 @@ public class CharacterMove : MonoBehaviour
     void Start()
     {
         position = rb.position;
+        plr = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-     
+      if (plr.GetComponent<Dialogue>().value == false)
+        {
+            rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (timer <= 1.1f)
+        if (timer <= 1.1f && plr.GetComponent<Dialogue>().value == true)
         {
             rb.position = Vector2.MoveTowards(rb.position, pointA.transform.position, speed * Time.deltaTime);
             // position.z = -0.6f; 
+            rb.constraints = ~RigidbodyConstraints2D.FreezePositionY;
             Debug.Log("Check");
             timer += Time.deltaTime;
         }
         else if (timer > 1.1f)
         {
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
+            rb.constraints = ~RigidbodyConstraints2D.FreezePositionY;
         }
     }
 }

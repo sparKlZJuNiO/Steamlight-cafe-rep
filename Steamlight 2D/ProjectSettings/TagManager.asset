@@ -7,6 +7,7 @@ TagManager:
   - NPC
   - Trigger
   - Trigger2
+  - name
   layers:
   - Default
   - TransparentFX

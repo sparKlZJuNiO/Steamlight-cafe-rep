@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     bool isPaused = false;
     [SerializeField] GameObject filter;
     GameObject[] NPCs;
+   [SerializeField] string yourName;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -26,6 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject pauseButton2;
+    [SerializeField] GameObject inputField;
+    [SerializeField] GameObject tagBackground;
+    [SerializeField] TextMeshPro tagText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake() // Best for initializing variables before the game is loaded
     {
@@ -36,12 +41,22 @@ public class Player : MonoBehaviour
     {
         NPCs = GameObject.FindGameObjectsWithTag("NPC");
         filter.SetActive(true);
+        inputField.SetActive(false);
     }
 
     // Update is called once per frame
     void Update() // Runs at frame-rate and is best for input systems or player movement
     {
-
+        if (yourName.Length <= 12 && yourName.Length > 0)
+        {
+            isMoving = true;
+            tagText.text = yourName;
+            tagBackground.SetActive(true);
+        }
+        else
+        {
+            isMoving = false;
+        }
     }
 
     private void FixedUpdate() // Runs in fixed intervals, good for rigidbodies and anything not frame-rate based
@@ -79,6 +94,14 @@ public class Player : MonoBehaviour
     {
         canvas.SetActive(false);
         isPlaying = true;
+        inputField.SetActive(true);
+    }
+
+    public void OnEndEdit(string text)
+    {
+        inputField.SetActive(false);
+        Debug.Log(text);
+        yourName = text;
     }
 
     public void PauseButton()
@@ -115,7 +138,7 @@ public class Player : MonoBehaviour
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        if (isPlaying == true && !isPaused)
+        if (isPlaying == true && !isPaused && isMoving == true)
         {
             moveInput = ctx.ReadValue<Vector2>();
 
