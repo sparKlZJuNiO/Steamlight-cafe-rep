@@ -8,11 +8,12 @@ TagManager:
   - Trigger
   - Trigger2
   - name
+  - Trigger3
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
   - 

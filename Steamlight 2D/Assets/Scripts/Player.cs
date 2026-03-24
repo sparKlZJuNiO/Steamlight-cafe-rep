@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
  
    [SerializeField] Rigidbody2D rb;
    [SerializeField] float speed = 0.05f;
-   bool isMoving;
+  public bool isMoving;
    bool isPlaying = false;
     bool isPaused = false;
     [SerializeField] GameObject filter;
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject inputField;
     [SerializeField] GameObject tagBackground;
     [SerializeField] TextMeshPro tagText;
+    bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake() // Best for initializing variables before the game is loaded
     {
@@ -82,7 +83,19 @@ public class Player : MonoBehaviour
            // Debug.Log("Below");
             playerAnim.SetBool("sideways", false);
             playerAnim.SetBool("forward", true);
+            playerAnim.SetBool("backwards", false);
             this.GetComponent<SpriteRenderer>().flipX = false;
+            tagBackground.GetComponent<SpriteRenderer>().enabled = true;
+            tagText.text = yourName;
+        }
+        if (-moveInput.y < 0)
+        {
+            // Debug.Log("Below");
+            playerAnim.SetBool("backwards", true);
+            playerAnim.SetBool("forward", false);
+            this.GetComponent<SpriteRenderer>().flipX = false;
+            tagBackground.GetComponent<SpriteRenderer>().enabled = false;
+            tagText.text = "";
         }
     }
     private void LateUpdate() // Runs after all updates and is best for post processing or camera movement
@@ -97,8 +110,16 @@ public class Player : MonoBehaviour
         inputField.SetActive(true);
     }
 
-    public void OnEndEdit(string text)
+    public void OnSelect(string text)
     {
+        triggered = true;
+    }
+        public void OnEndEdit(string text)
+    {
+        if (triggered == false)
+        {
+            return;
+        }
         inputField.SetActive(false);
         Debug.Log(text);
         yourName = text;

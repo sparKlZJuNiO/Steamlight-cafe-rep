@@ -7,8 +7,9 @@ public class Dialogue : MonoBehaviour
     public bool value = false;
 
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI text2;
     [SerializeField] GameObject textObject;
-   public GameObject[] NPCs;
+    public GameObject[] NPCs;
     bool tick;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,7 +60,7 @@ public class Dialogue : MonoBehaviour
         {
             {
               //  Debug.Log("hERE");
-                text.text = "Can I have a blue cappunchino?";
+                text2.text = "Can I have a blue cappunchino?";
             }
         }
     }
