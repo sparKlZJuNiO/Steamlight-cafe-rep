@@ -67,20 +67,41 @@ public class Player : MonoBehaviour
         if (moveInput.x > 0)
         {
            // Debug.Log("Right");
-            playerAnim.SetBool("sideways", true);
-            playerAnim.SetBool("forward", false);
-            this.GetComponent<SpriteRenderer>().flipX = true;
+            if (-moveInput.y !< 0)
+            {
+                playerAnim.SetBool("sideways", false);
+                playerAnim.SetBool("forward", false);
+                playerAnim.SetBool("backwards", true);
+            }
+            else
+            {
+                playerAnim.SetBool("sideways", true);
+                playerAnim.SetBool("forward", false);
+                playerAnim.SetBool("backwards", false);
+                this.GetComponent<SpriteRenderer>().flipX = true;
+            }
         }
         if (moveInput.x < 0)
         {
           //  Debug.Log("Left");
-            playerAnim.SetBool("sideways", true);
-            playerAnim.SetBool("forward", false);
-            this.GetComponent<SpriteRenderer>().flipX = false;
+          if (-moveInput.y !< 0)
+            {
+                 playerAnim.SetBool("sideways", false);
+                playerAnim.SetBool("forward", false);
+                playerAnim.SetBool("backwards", true);
+            }
+          else
+            {
+                playerAnim.SetBool("sideways", true);
+                this.GetComponent<SpriteRenderer>().flipX = false;
+                playerAnim.SetBool("forward", false);
+                playerAnim.SetBool("backwards", false);
+            }
+         
         }
         if (-moveInput.y > 0)
         {
-           // Debug.Log("Below");
+           // Debug.Log("Up");
             playerAnim.SetBool("sideways", false);
             playerAnim.SetBool("forward", true);
             playerAnim.SetBool("backwards", false);

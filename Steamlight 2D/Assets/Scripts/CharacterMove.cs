@@ -23,6 +23,7 @@ public class CharacterMove : MonoBehaviour
     {
         position = rb.position;
         plr = GameObject.FindGameObjectWithTag("Player");
+        rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
     }
 
     // Update is called once per frame
