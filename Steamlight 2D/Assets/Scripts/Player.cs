@@ -58,6 +58,16 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
+        if (yourName.Length <= 12 && yourName.Length < 1 && isPlaying == true)
+        {
+            inputField.SetActive(true);
+        }
+        if (isPlaying == true)
+        {
+            {
+                NPCs[0].GetComponent<CharacterMove>().autoMove = true;
+            }
+        }
     }
 
     private void FixedUpdate() // Runs in fixed intervals, good for rigidbodies and anything not frame-rate based

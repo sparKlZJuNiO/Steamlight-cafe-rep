@@ -9,8 +9,10 @@ public class CharacterMove : MonoBehaviour
     private Vector3 position;
     [SerializeField] Rigidbody2D rb;
    [SerializeField] float timer;
+    Animator anim;
    public bool npcValue = false;
     GameObject plr;
+   public bool autoMove;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,12 +26,13 @@ public class CharacterMove : MonoBehaviour
         position = rb.position;
         plr = GameObject.FindGameObjectWithTag("Player");
         rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      if (plr.GetComponent<Dialogue>().value == false)
+      if (plr.GetComponent<Dialogue>().value == false || autoMove == false)
         {
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
         }
@@ -40,6 +43,7 @@ public class CharacterMove : MonoBehaviour
         if (timer <= 1.1f && plr.GetComponent<Dialogue>().value == true)
         {
             rb.position = Vector2.MoveTowards(rb.position, pointA.transform.position, speed * Time.deltaTime);
+            anim.SetBool("walking", true);
             // position.z = -0.6f; 
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionY;
            // Debug.Log("Check");
@@ -49,6 +53,24 @@ public class CharacterMove : MonoBehaviour
         {
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+            anim.SetBool("walking", false);
+        }
+        // Automove 
+        if (timer <= 1.1f && autoMove == true)
+        {
+            rb.position = Vector2.MoveTowards(rb.position, pointA.transform.position, speed * Time.deltaTime);
+            anim.SetBool("walking", true);
+            // position.z = -0.6f; 
+            rb.constraints = ~RigidbodyConstraints2D.FreezePositionY;
+            // Debug.Log("Check");
+            timer += Time.deltaTime;
+        }
+        else if (timer > 1.1f)
+        {
+            rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
+            rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+            anim.SetBool("walking", false);
+            autoMove = false;
         }
     }
 }

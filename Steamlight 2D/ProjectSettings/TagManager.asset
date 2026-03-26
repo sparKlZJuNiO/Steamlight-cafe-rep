@@ -9,6 +9,7 @@ TagManager:
   - Trigger2
   - name
   - Trigger3
+  - CoffeeMaker
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - NPCLayer
-  - 
+  - CoffeeMachine
   - 
   - 
   - 
