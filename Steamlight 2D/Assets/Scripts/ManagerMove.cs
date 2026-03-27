@@ -30,7 +30,7 @@ public class ManagerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (timer <= 1.7f && plr.GetComponent<Player>().isMoving == true)
+        if (timer <= 2.3f && plr.GetComponent<Player>().isMoving == true)
         {
             rb.position = Vector2.MoveTowards(rb.position, pointB.transform.position, speed * Time.deltaTime);
             // position.z = -0.6f; 
@@ -39,11 +39,11 @@ public class ManagerMove : MonoBehaviour
             timer += Time.deltaTime;
             anim.SetBool("walking", true);
         }
-        else if (timer >= 1.7f)
+        else if (timer >= 2.3f)
         {
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
-            rb.position = new Vector3(-12.5299997f, -13.9700003f, -5.84000015f);
+            rb.position = new Vector3(-12.0699997f, -15.6099997f, -3.4000001f);
             anim.SetBool("walking", false);
         }
     }
