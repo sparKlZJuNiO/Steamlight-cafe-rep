@@ -485,13 +485,13 @@ GameObject:
   m_Component:
   - component: {fileID: 33182198}
   - component: {fileID: 33182197}
-  - component: {fileID: 33182201}
+  - component: {fileID: 33182203}
   - component: {fileID: 33182199}
   - component: {fileID: 33182200}
   - component: {fileID: 33182202}
   m_Layer: 0
   m_Name: Npc sprite
-  m_TagString: Untagged
+  m_TagString: autoMoveNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,7 +560,7 @@ Transform:
   m_GameObject: {fileID: 33182196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: -1.66, z: -1.23}
+  m_LocalPosition: {x: 2.4, y: -2.71, z: -1.23}
   m_LocalScale: {x: 0.4314333, y: 0.4314333, z: 0.4314333}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -634,24 +634,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &33182201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33182196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df7a720437f1590419ce5ae09cc8fba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: {fileID: 1853521620}
-  speed: 2.81
-  rb: {fileID: 33182202}
-  timer: 0
-  npcValue: 0
-  autoMove: 0
 --- !u!50 &33182202
 Rigidbody2D:
   serializedVersion: 5
@@ -664,7 +646,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.37
+  m_Mass: 365.46
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0.55
@@ -679,6 +661,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &33182203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33182196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc961a88332edd848aa904704fd2ac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1853521620}
+  speed: 0.25
+  rb: {fileID: 33182202}
+  timer: 0
+  autoMove: 0
 --- !u!1 &35874816
 GameObject:
   m_ObjectHideFlags: 0
@@ -5931,8 +5930,8 @@ MonoBehaviour:
   text2: {fileID: 1021550340}
   textObject: {fileID: 550661078}
   NPCs:
-  - {fileID: 33182196}
   - {fileID: 754227280}
+  assignedTask: 0
 --- !u!1 &298870829
 GameObject:
   m_ObjectHideFlags: 0
@@ -11156,7 +11155,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365402715402187860, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
       propertyPath: m_Name
-      value: Coffee (15)
+      value: Coffee2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365402715402187860, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11665,7 +11668,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.37
+  m_Mass: 365.46
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0.55
@@ -13131,7 +13134,6 @@ MonoBehaviour:
   rb: {fileID: 754227286}
   timer: 0
   npcValue: 0
-  autoMove: 0
 --- !u!50 &754227286
 Rigidbody2D:
   serializedVersion: 5
@@ -13144,7 +13146,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.37
+  m_Mass: 365.46
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0.55
@@ -20733,7 +20735,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1755139901044668841, guid: ef133d2c31ccce24f9e890a76dccfffd, type: 3}
       propertyPath: m_Name
-      value: Coffee (16)
+      value: Coffee3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755139901044668841, guid: ef133d2c31ccce24f9e890a76dccfffd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7610442541189751365, guid: ef133d2c31ccce24f9e890a76dccfffd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23615,6 +23621,7 @@ GameObject:
   - component: {fileID: 1315214035}
   - component: {fileID: 1315214034}
   - component: {fileID: 1315214037}
+  - component: {fileID: 1315214038}
   m_Layer: 7
   m_Name: Coffee Machine
   m_TagString: CoffeeMaker
@@ -23652,11 +23659,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.22138953, y: 0.11069435}
+  m_Offset: {x: 0.038201094, y: 0.11069441}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -23666,7 +23673,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.8586273, y: 3.6186237}
+  m_Size: {x: 3.891139, y: 3.6186237}
   m_EdgeRadius: 0
 --- !u!212 &1315214035
 SpriteRenderer:
@@ -23761,6 +23768,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1315214038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315214033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af23356c2ee02614b83dd7f15a67c1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1326959648
 GameObject:
   m_ObjectHideFlags: 0
@@ -29473,7 +29492,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1643662174887154336, guid: e090231e38d0ca14b845ad8683e0598c, type: 3}
       propertyPath: m_Name
-      value: Coffee (14)
+      value: 'Coffee '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643662174887154336, guid: e090231e38d0ca14b845ad8683e0598c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5576048241140901721, guid: e090231e38d0ca14b845ad8683e0598c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33967,7 +33990,7 @@ Transform:
   m_GameObject: {fileID: 1853521620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.71, y: -3.63, z: -3.4}
+  m_LocalPosition: {x: 2.83, y: -8.88, z: -3.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

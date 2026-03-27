@@ -7,16 +7,23 @@ public class Dialogue : MonoBehaviour
     public bool value = false;
 
     [SerializeField] TextMeshProUGUI text;
-    [SerializeField] TextMeshProUGUI text2;
+    [SerializeField] public TextMeshProUGUI text2;
     [SerializeField] GameObject textObject;
+    GameObject plr;
     public GameObject[] NPCs;
+    bool dialogueToggle;
     bool tick;
+    float wait;
+    public bool assignedTask;
+
+     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Trigger"))
         {
             value = true;
             textObject.SetActive(true);
+            
         }
       
     }
@@ -39,17 +46,24 @@ public class Dialogue : MonoBehaviour
     }
     void Start()
     {
-     
+        plr = GameObject.FindGameObjectWithTag("Player");
     }
 
   
     void Update()
     {
-      foreach(GameObject gameObject in NPCs)
+ 
+        foreach (GameObject gameObject in NPCs)
         {
            if (gameObject.GetComponent<CharacterMove>().npcValue == true)
             {
                 tick = true;
+                dialogueToggle = true;
+                wait += Time.deltaTime;
+                if (wait > 1.2f && tick == true)
+                {
+                    text2.text = "PRESS E TO CONTINUE DIALOGUE";
+                }
             }
         }
     }
@@ -59,8 +73,12 @@ public class Dialogue : MonoBehaviour
         if (value == true && tick == true)
         {
             {
-              //  Debug.Log("hERE");
+                //  Debug.Log("hERE");
+                wait = 0;
                 text2.text = "Can I have a blue cappunchino?";
+                dialogueToggle = false;
+                tick = false;
+                assignedTask = true;
             }
         }
     }

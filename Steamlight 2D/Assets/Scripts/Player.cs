@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
    bool isPlaying = false;
     bool isPaused = false;
     [SerializeField] GameObject filter;
-    GameObject[] NPCs;
+    GameObject[] autoMoveNPCs;
    [SerializeField] string yourName;
 
     [Header("Animator")]
@@ -40,10 +40,12 @@ public class Player : MonoBehaviour
     }
     void Start() // Best for initializing variables
     {
-        NPCs = GameObject.FindGameObjectsWithTag("NPC");
+        autoMoveNPCs = GameObject.FindGameObjectsWithTag("autoMoveNPC");
         filter.SetActive(true);
         inputField.SetActive(false);
     }
+
+
 
     // Update is called once per frame
     void Update() // Runs at frame-rate and is best for input systems or player movement
@@ -62,10 +64,13 @@ public class Player : MonoBehaviour
         {
             inputField.SetActive(true);
         }
-        if (isPlaying == true)
+        if (isPlaying == true && isMoving == true)
         {
             {
-                NPCs[0].GetComponent<CharacterMove>().autoMove = true;
+                foreach(GameObject gameObject in autoMoveNPCs)
+                {
+                    gameObject.GetComponent<CharacterMove2>().autoMove = true;
+                }
             }
         }
     }
@@ -168,7 +173,7 @@ public class Player : MonoBehaviour
         playerAnim.SetBool("sideways", false);
         playerAnim.SetBool("forward", false);
         playerAnim.SetBool("move", false);
-        foreach (GameObject gameObject in NPCs)
+        foreach (GameObject gameObject in plr.GetComponent<Dialogue>().NPCs)
         {
             gameObject.GetComponent<Animator>().enabled = false;
         }
@@ -182,7 +187,7 @@ public class Player : MonoBehaviour
         uiAnim.SetBool("pause", false);
         isPaused = false;
         speed = 0.05f;
-        foreach (GameObject gameObject in NPCs)
+        foreach (GameObject gameObject in plr.GetComponent<Dialogue>().NPCs)
         {
             gameObject.GetComponent<Animator>().enabled = true;
         }

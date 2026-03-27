@@ -10,6 +10,7 @@ TagManager:
   - name
   - Trigger3
   - CoffeeMaker
+  - autoMoveNPC
   layers:
   - Default
   - TransparentFX
