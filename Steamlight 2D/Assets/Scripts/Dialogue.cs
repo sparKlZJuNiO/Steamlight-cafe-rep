@@ -11,7 +11,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] GameObject textObject;
     GameObject plr;
     public GameObject[] NPCs;
-    bool dialogueToggle;
+   public bool dialogueToggle;
     bool tick;
     float wait;
     public bool assignedTask;

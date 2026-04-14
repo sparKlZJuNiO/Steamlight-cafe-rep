@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
    [SerializeField] string yourName;
     [SerializeField] GameObject coffeeMachinePointB;
     [SerializeField] GameObject waiterLinePointB;
-    [SerializeField] GameObject spawnObject;
-    GameObject instantiatedGameObject;
+    [SerializeField] GameObject arrowObject;
+    [SerializeField] float offset;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -72,14 +72,31 @@ public class Player : MonoBehaviour
         if (isPlaying == true && isMoving == true)
         {
             {
-                foreach(GameObject gameObject in autoMoveNPCs)
+                foreach (GameObject gameObject in autoMoveNPCs)
                 {
                     gameObject.GetComponent<CharacterMove2>().autoMove = true;
                 }
             }
-           instantiatedGameObject = Instantiate(spawnObject);
-            instantiatedGameObject.name = "spawnGameObject";
-            //pointObject.transform.position = new Vector2(distance, distance);
+            if (this.GetComponent<Dialogue>().text2.text != "Can I have a blue cappunchino?")
+            {
+                float xDiff = waiterLinePointB.transform.position.x - arrowObject.transform.position.x;
+                float yDiff = waiterLinePointB.transform.position.y - arrowObject.transform.position.y;
+
+                float radians = Mathf.Atan2(yDiff, xDiff);
+                float degrees = radians * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
+            }
+            if (this.GetComponent<Dialogue>().assignedTask == true)
+            {
+                float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
         }
     }
 
