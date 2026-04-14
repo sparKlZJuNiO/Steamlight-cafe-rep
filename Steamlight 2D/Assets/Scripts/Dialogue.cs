@@ -15,8 +15,21 @@ public class Dialogue : MonoBehaviour
     bool tick;
     float wait;
     public bool assignedTask;
+    GameObject coffeeMachine;
 
-     
+    private void Awake() // Before initialization, good when the game is not loaded in
+    {
+        
+    }
+
+    void Start() // Initializating variables, good when the game is loaded
+    {
+        plr = GameObject.FindGameObjectWithTag("Player");
+        coffeeMachine = GameObject.FindGameObjectWithTag("CoffeeMaker");
+    }
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Trigger"))
@@ -44,12 +57,7 @@ public class Dialogue : MonoBehaviour
             textObject.SetActive(false);
         }
     }
-    void Start()
-    {
-        plr = GameObject.FindGameObjectWithTag("Player");
-    }
 
-  
     void Update()
     {
  

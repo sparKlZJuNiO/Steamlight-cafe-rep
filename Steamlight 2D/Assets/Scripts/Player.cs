@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject filter;
     GameObject[] autoMoveNPCs;
    [SerializeField] string yourName;
+    [SerializeField] GameObject coffeeMachinePointB;
+    [SerializeField] GameObject waiterLinePointB;
+    [SerializeField] GameObject spawnObject;
+    GameObject instantiatedGameObject;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject inputField;
     [SerializeField] GameObject tagBackground;
     [SerializeField] TextMeshPro tagText;
+
     bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake() // Best for initializing variables before the game is loaded
@@ -72,6 +77,9 @@ public class Player : MonoBehaviour
                     gameObject.GetComponent<CharacterMove2>().autoMove = true;
                 }
             }
+           instantiatedGameObject = Instantiate(spawnObject);
+            instantiatedGameObject.name = "spawnGameObject";
+            //pointObject.transform.position = new Vector2(distance, distance);
         }
     }
 
