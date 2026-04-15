@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Xml;
 
 public class Player : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake() // Best for initializing variables before the game is loaded
     {
-        plr = this.GetComponent<GameObject>();
+        plr = GameObject.FindGameObjectWithTag("Player");
         playerAnim = GetComponent<Animator>();
     }
     void Start() // Best for initializing variables
@@ -71,12 +72,11 @@ public class Player : MonoBehaviour
         }
         if (isPlaying == true && isMoving == true)
         {
-            {
                 foreach (GameObject gameObject in autoMoveNPCs)
                 {
                     gameObject.GetComponent<CharacterMove2>().autoMove = true;
                 }
-            }
+
             if (this.GetComponent<Dialogue>().text2.text != "Can I have a blue cappunchino?")
             {
                 float xDiff = waiterLinePointB.transform.position.x - arrowObject.transform.position.x;
@@ -87,6 +87,8 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
             }
+
+         
             if (this.GetComponent<Dialogue>().assignedTask == true)
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
@@ -96,6 +98,10 @@ public class Player : MonoBehaviour
                 float degrees2 = radians2 * Mathf.Rad2Deg;
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
+            if (plr.GetComponent<Dialogue>().tick2 == true)
+            {
+                plr.GetComponent<Animator>().SetBool("serving", false);
             }
         }
     }

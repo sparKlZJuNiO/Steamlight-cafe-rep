@@ -5,7 +5,7 @@ public class CoffeeMakerScript : MonoBehaviour
 
     GameObject plr;
     [SerializeField] float waitTime = 10;
-    [SerializeField] public GameObject coffeeObject;
+    [SerializeField] public bool coffeeGiven;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,7 +20,7 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
             waitTime = 10;
             plr.GetComponent<Dialogue>().assignedTask = false;
-            coffeeObject.SetActive(true);
+            coffeeGiven = true;
         }
     }
 
@@ -36,7 +36,7 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
             plr.GetComponent<Dialogue>().assignedTask = false;
             waitTime = 10;
-            coffeeObject.SetActive(true);
+            coffeeGiven = true;
         }
     }
     void Start()
@@ -56,6 +56,11 @@ public class CoffeeMakerScript : MonoBehaviour
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
             this.gameObject.GetComponent<Animator>().SetBool("Done", true);
+        }
+        if (coffeeGiven == true && plr.GetComponent<Dialogue>().tick2 == false)
+        {
+            plr.GetComponent<Animator>().SetBool("serving", true);
+            plr.GetComponent<Animator>().SetBool("blue", true);
         }
     }
 }

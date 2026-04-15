@@ -13,6 +13,7 @@ public class Dialogue : MonoBehaviour
     public GameObject[] NPCs;
    public bool dialogueToggle;
     bool tick;
+   public bool tick2;
     float wait;
     public bool assignedTask;
     GameObject coffeeMachine;
@@ -60,7 +61,6 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
- 
         foreach (GameObject gameObject in NPCs)
         {
            if (gameObject.GetComponent<CharacterMove>().npcValue == true)
@@ -78,16 +78,22 @@ public class Dialogue : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext ctx)
     {
-        if (value == true && tick == true)
+        if (value == true && tick == true && tick2 == false)
         {
-            {
                 //  Debug.Log("hERE");
                 wait = 0;
                 text2.text = "Can I have a blue cappunchino?";
                 dialogueToggle = false;
                 tick = false;
                 assignedTask = true;
-            }
+        }
+        if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
+        {
+            text2.text = "Thanks for the coffee";
+            value = false;
+            tick = false;
+            tick2 = true;
+            plr.GetComponent<Animator>().SetBool("serving", false);
         }
     }
 }
