@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
-            if (plr.GetComponent<Dialogue>().tick2 == true)
+            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee")
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
             }
