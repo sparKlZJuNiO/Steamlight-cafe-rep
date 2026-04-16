@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject waiterLinePointB;
     [SerializeField] GameObject arrowObject;
     [SerializeField] float offset;
+    [SerializeField] GameObject coffeeMachine;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -30,12 +31,15 @@ public class Player : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject accessibilityCanvas;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject pauseButton2;
     [SerializeField] GameObject inputField;
     [SerializeField] GameObject tagBackground;
     [SerializeField] TextMeshPro tagText;
+    [SerializeField] Image checkMark;
+    [SerializeField] TextMeshProUGUI textPopup;
 
     bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -99,6 +103,12 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
+
+            if (coffeeMachine.GetComponent<Animator>().GetBool("wait") == true)
+            {
+                checkMark.GetComponent<Image>().enabled = true;
+            }
+
             if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee")
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
@@ -222,6 +232,15 @@ public class Player : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().enabled = true;
         }
+    }
+
+    public void accessibilityButton()
+    {
+       accessibilityCanvas.SetActive(true);
+    }
+    public void backAccessiblityButton()
+    {
+        accessibilityCanvas.SetActive(false);
     }
 
     public void Move(InputAction.CallbackContext ctx)
