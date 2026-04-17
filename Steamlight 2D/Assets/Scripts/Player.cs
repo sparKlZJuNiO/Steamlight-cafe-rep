@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml;
+using UnityEngine.Rendering;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject arrowObject;
     [SerializeField] float offset;
     [SerializeField] GameObject coffeeMachine;
+    [SerializeField] AudioSource audioSource;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject accessibilityCanvas;
+    [SerializeField] GameObject optionsCanvas;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject pauseButton2;
@@ -40,6 +44,9 @@ public class Player : MonoBehaviour
     [SerializeField] TextMeshPro tagText;
     [SerializeField] Image checkMark;
     [SerializeField] TextMeshProUGUI textPopup;
+    [SerializeField] Slider soundSlider;
+    [SerializeField] AudioMixer masterMixer;
+    [SerializeField] Toggle togglePart;
 
     bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,9 +60,41 @@ public class Player : MonoBehaviour
         autoMoveNPCs = GameObject.FindGameObjectsWithTag("autoMoveNPC");
         filter.SetActive(true);
         inputField.SetActive(false);
+        SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 100));
     }
 
+    public void SetVolume(float _value)
+    {
+        if (_value < 1)
+        {
+            _value = .001f;
+        }
+        RefreshSlider(_value);
+        PlayerPrefs.SetFloat("SavedMasterVolume", _value);
+        masterMixer.SetFloat("MasterVolume", Mathf.Log10(_value / 100) * 20f);
+    }
 
+    public void SetVolumeFromSlider()
+    {
+        SetVolume(soundSlider.value);   
+    }
+
+    public void RefreshSlider(float _value)
+    {
+        soundSlider.value = _value; 
+    }
+
+    public void MusicToggle()
+    {
+        if (togglePart.isOn == true)
+        {
+            audioSource.mute = true;
+        }
+        else
+        {
+            audioSource.mute = false;
+        }
+    }
 
     // Update is called once per frame
     void Update() // Runs at frame-rate and is best for input systems or player movement
@@ -104,7 +143,7 @@ public class Player : MonoBehaviour
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
 
-            if (coffeeMachine.GetComponent<Animator>().GetBool("wait") == true)
+            if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
             {
                 checkMark.GetComponent<Image>().enabled = true;
             }
@@ -237,6 +276,21 @@ public class Player : MonoBehaviour
     public void accessibilityButton()
     {
        accessibilityCanvas.SetActive(true);
+    }
+
+    public void OptionsMenu()
+    {
+        optionsCanvas.SetActive(true);
+    }
+
+    public void VolumeChange()
+    {
+       
+    }
+
+    public void backOptionsMenu()
+    {
+        optionsCanvas.SetActive(false);
     }
     public void backAccessiblityButton()
     {
