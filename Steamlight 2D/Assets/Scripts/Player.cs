@@ -7,6 +7,7 @@ using TMPro;
 using System.Xml;
 using UnityEngine.Rendering;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
     [SerializeField] Slider soundSlider;
     [SerializeField] AudioMixer masterMixer;
     [SerializeField] Toggle togglePart;
+    [SerializeField] Volume volume;
+    ColorAdjustments colorAdjustments;
 
     bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,6 +64,36 @@ public class Player : MonoBehaviour
         filter.SetActive(true);
         inputField.SetActive(false);
         SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 100));
+    }
+
+    public void RedGreen()
+    {
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
+            {
+
+                colorAdjustments.hueShift.value = 64;
+                colorAdjustments.hueShift.overrideState = true;
+            }
+    }
+
+    public void BlueYellow()
+    {
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
+        {
+
+            colorAdjustments.hueShift.value = -24;
+            colorAdjustments.hueShift.overrideState = true;
+        }
+    }
+
+    public void Off()
+    {
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
+        {
+
+            colorAdjustments.hueShift.value = 0;
+            colorAdjustments.hueShift.overrideState = true;
+        }
     }
 
     public void SetVolume(float _value)
