@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField] float offset;
     [SerializeField] GameObject coffeeMachine;
     [SerializeField] AudioSource audioSource;
+    bool value1;
+    float timer = 6f;
+    GameObject manager;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -45,6 +48,8 @@ public class Player : MonoBehaviour
     [SerializeField] TextMeshPro tagText;
     [SerializeField] Image checkMark;
     [SerializeField] TextMeshProUGUI textPopup;
+    [SerializeField] GameObject menuText;
+    [SerializeField] GameObject menuBackground;
     [SerializeField] Slider soundSlider;
     [SerializeField] AudioMixer masterMixer;
     [SerializeField] Toggle togglePart;
@@ -57,6 +62,7 @@ public class Player : MonoBehaviour
     {
         plr = GameObject.FindGameObjectWithTag("Player");
         playerAnim = GetComponent<Animator>();
+        manager = GameObject.FindGameObjectWithTag("Manager");
     }
     void Start() // Best for initializing variables
     {
@@ -142,8 +148,16 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
-        if (yourName.Length <= 12 && yourName.Length < 1 && isPlaying == true)
+        if (value1 == false && isPlaying == true)
         {
+            menuBackground.SetActive(true);
+            menuText.GetComponent<TextMeshProUGUI>().text = "Hello, you must be the new employee. Welcome to Steamlight Cafe, I will be your manager. My job is to overlook employees like you to see how well you do your shift.";
+            timer -= Time.deltaTime;
+        }
+        if (timer < 0 && yourName.Length <= 12 && yourName.Length < 1 && isPlaying == true)
+        {
+            value1 = true;
+            menuText.GetComponent<TextMeshProUGUI>().text = "What's your name?";
             inputField.SetActive(true);
         }
         if (isPlaying == true && isMoving == true)
@@ -162,6 +176,10 @@ public class Player : MonoBehaviour
                 float degrees = radians * Mathf.Rad2Deg;
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
+            }
+            if (this.GetComponent<Dialogue>().text2.text == "Can I have a blue cappunchino?")
+            {
+                coffeeMachine.GetComponent<BoxCollider2D>().enabled = true;
             }
 
          
@@ -256,7 +274,6 @@ public class Player : MonoBehaviour
     {
         canvas.SetActive(false);
         isPlaying = true;
-        inputField.SetActive(true);
     }
 
     public void OnSelect(string text)
@@ -272,6 +289,8 @@ public class Player : MonoBehaviour
         inputField.SetActive(false);
         Debug.Log(text);
         yourName = text;
+        menuBackground.SetActive(false);
+        menuText.GetComponent<TextMeshProUGUI>().text = "";
     }
 
     public void PauseButton()
