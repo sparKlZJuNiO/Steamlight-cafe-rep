@@ -175,6 +175,8 @@ public class Player : MonoBehaviour
         }
         if (value1 == false && isPlaying == true)
         {
+            pauseButton.SetActive(true);
+            pauseButton2.SetActive(true);
             menuBackground.SetActive(true);
             menuText.GetComponent<TextMeshProUGUI>().text = "Hello, you must be the new employee. Welcome to Steamlight Cafe, I will be your manager. My job is to overlook employees like you to see how well you do your shift.";
             timer -= Time.deltaTime;
