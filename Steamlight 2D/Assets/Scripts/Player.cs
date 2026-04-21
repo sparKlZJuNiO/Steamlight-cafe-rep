@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     [SerializeField] float offset;
     [SerializeField] GameObject coffeeMachine;
     [SerializeField] AudioSource audioSource;
-    bool newPoint;
+   [SerializeField] bool newPoint;
     bool value1;
     float timer = 12f;
     GameObject manager;
@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     [SerializeField] Toggle vsyncToggle;
     [SerializeField] Volume volume;
     ColorAdjustments colorAdjustments;
+    Vignette vignette;
     [SerializeField] GameObject checkpointUI;
 
     bool triggered;
@@ -154,6 +155,14 @@ public class Player : MonoBehaviour
         // Update is called once per frame
         void Update() // Runs at frame-rate and is best for input systems or player movement
     {
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+            if (vignette.intensity.value > 1)
+            {
+                vignette.intensity.value -= Time.deltaTime;
+            }
+            vignette.intensity.overrideState = true;
+        }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
             isMoving = true;
@@ -215,7 +224,7 @@ public class Player : MonoBehaviour
                 checkMark.GetComponent<Image>().enabled = true;
             }
 
-            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee")
+            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee" || newPoint == true)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
                 checkpointUI.SetActive(true);
@@ -299,6 +308,21 @@ public class Player : MonoBehaviour
     {
         canvas.SetActive(false);
         isPlaying = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ManagerPoint") && newPoint == true)
+        {
+            manager.GetComponent<Animator>().SetBool("corrupted", true);
+            manager.GetComponent<Animator>().SetBool("corrupted set", true);
+                  if (volume.profile.TryGet<Vignette>(out vignette))
+            {
+
+                vignette.intensity.value = 0.554f;
+                vignette.intensity.overrideState = true;
+            }
+        }
     }
 
     public void OnSelect(string text)

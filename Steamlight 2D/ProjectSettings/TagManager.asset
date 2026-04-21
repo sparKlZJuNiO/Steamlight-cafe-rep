@@ -12,6 +12,7 @@ TagManager:
   - CoffeeMaker
   - autoMoveNPC
   - Manager
+  - ManagerPoint
   layers:
   - Default
   - TransparentFX
