@@ -8,6 +8,7 @@ using System.Xml;
 using UnityEngine.Rendering;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
+using System.ComponentModel;
 
 public class Player : MonoBehaviour
 {
@@ -23,13 +24,15 @@ public class Player : MonoBehaviour
     GameObject[] autoMoveNPCs;
    [SerializeField] string yourName;
     [SerializeField] GameObject coffeeMachinePointB;
+    [SerializeField] GameObject managerPointA;
     [SerializeField] GameObject waiterLinePointB;
     [SerializeField] GameObject arrowObject;
     [SerializeField] float offset;
     [SerializeField] GameObject coffeeMachine;
     [SerializeField] AudioSource audioSource;
+    bool newPoint;
     bool value1;
-    float timer = 6f;
+    float timer = 12f;
     GameObject manager;
 
     [Header("Animator")]
@@ -53,8 +56,10 @@ public class Player : MonoBehaviour
     [SerializeField] Slider soundSlider;
     [SerializeField] AudioMixer masterMixer;
     [SerializeField] Toggle togglePart;
+    [SerializeField] Toggle vsyncToggle;
     [SerializeField] Volume volume;
     ColorAdjustments colorAdjustments;
+    [SerializeField] GameObject checkpointUI;
 
     bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -125,7 +130,7 @@ public class Player : MonoBehaviour
 
     public void MusicToggle()
     {
-        if (togglePart.isOn == true)
+        if (togglePart.isOn == false)
         {
             audioSource.mute = true;
         }
@@ -134,9 +139,20 @@ public class Player : MonoBehaviour
             audioSource.mute = false;
         }
     }
+    public void VsyncToggle()
+    {
+        if (vsyncToggle.isOn == true)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+    }
 
-    // Update is called once per frame
-    void Update() // Runs at frame-rate and is best for input systems or player movement
+        // Update is called once per frame
+        void Update() // Runs at frame-rate and is best for input systems or player movement
     {
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
@@ -167,7 +183,7 @@ public class Player : MonoBehaviour
                     gameObject.GetComponent<CharacterMove2>().autoMove = true;
                 }
 
-            if (this.GetComponent<Dialogue>().text2.text != "Can I have a blue cappunchino?")
+            if (this.GetComponent<Dialogue>().text2.text != "Can I have a blue cappunchino?" && newPoint == false)
             {
                 float xDiff = waiterLinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff = waiterLinePointB.transform.position.y - arrowObject.transform.position.y;
@@ -183,7 +199,7 @@ public class Player : MonoBehaviour
             }
 
          
-            if (this.GetComponent<Dialogue>().assignedTask == true)
+            if (this.GetComponent<Dialogue>().assignedTask == true && newPoint == false)
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
@@ -202,6 +218,15 @@ public class Player : MonoBehaviour
             if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee")
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
+                checkpointUI.SetActive(true);
+                float xDiff2 = managerPointA.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = managerPointA.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+                newPoint = true;
             }
         }
     }
@@ -318,7 +343,7 @@ public class Player : MonoBehaviour
         pauseScreen.SetActive(false);
         uiAnim.SetBool("pause", false);
         isPaused = false;
-        speed = 0.05f;
+        speed = 0.08f;
         foreach (GameObject gameObject in plr.GetComponent<Dialogue>().NPCs)
         {
             gameObject.GetComponent<Animator>().enabled = true;

@@ -1612,6 +1612,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: backwards
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: serving
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1119443157769717156}
   m_Solo: 0
