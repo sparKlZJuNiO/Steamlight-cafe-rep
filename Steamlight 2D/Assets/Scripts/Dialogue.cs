@@ -15,7 +15,7 @@ public class Dialogue : MonoBehaviour
    public bool dialogueToggle;
     bool tick;
    public bool tick2;
-    float wait;
+   [SerializeField] float wait = 5;
     public bool assignedTask;
     GameObject coffeeMachine;
 
@@ -64,14 +64,15 @@ public class Dialogue : MonoBehaviour
     {
         foreach (GameObject gameObject in NPCs)
         {
-           if (gameObject.GetComponent<CharacterMove>().npcValue == true)
-            {
+            if (text2.enabled == true)
+            { 
                 tick = true;
                 dialogueToggle = true;
-                wait += Time.deltaTime;
-                if (wait > 1.2f && tick == true)
+                wait -= Time.deltaTime;
+                if (wait < 1f && tick == true)
                 {
                     text2.text = "PRESS E TO CONTINUE DIALOGUE";
+                    wait = 5f;
                 }
             }
         }

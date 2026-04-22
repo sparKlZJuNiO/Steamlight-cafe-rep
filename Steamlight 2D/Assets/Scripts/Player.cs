@@ -14,16 +14,16 @@ public class Player : MonoBehaviour
 {
     GameObject plr;
     private Vector2 moveInput;
- 
-   [SerializeField] Rigidbody2D rb;
-   [SerializeField] float speed = 0.05f;
-  public bool isMoving;
-   bool isPlaying = false;
+
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] float speed = 0.05f;
+    public bool isMoving;
+    bool isPlaying = false;
     [SerializeField] float health = 100;
     bool isPaused = false;
     [SerializeField] GameObject filter;
     GameObject[] autoMoveNPCs;
-   [SerializeField] string yourName;
+    [SerializeField] string yourName;
     [SerializeField] GameObject coffeeMachinePointB;
     [SerializeField] GameObject managerPointA;
     [SerializeField] GameObject waiterLinePointB;
@@ -31,15 +31,15 @@ public class Player : MonoBehaviour
     [SerializeField] float offset;
     [SerializeField] GameObject coffeeMachine;
     [SerializeField] AudioSource audioSource;
-   [SerializeField] bool newPoint;
+    [SerializeField] bool newPoint;
     bool value1;
-    float timer = 12f;
+    float timer = 7f;
     GameObject manager;
     [SerializeField] bool doNotMove;
 
     [Header("Animator")]
     Animator playerAnim;
-   [SerializeField] Animator uiAnim;
+    [SerializeField] Animator uiAnim;
 
     [Header("UI")]
     [SerializeField] GameObject canvas;
@@ -83,11 +83,11 @@ public class Player : MonoBehaviour
     public void RedGreen()
     {
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
-            {
+        {
 
-                colorAdjustments.hueShift.value = 64;
-                colorAdjustments.hueShift.overrideState = true;
-            }
+            colorAdjustments.hueShift.value = 64;
+            colorAdjustments.hueShift.overrideState = true;
+        }
     }
 
     public void BlueYellow()
@@ -123,12 +123,12 @@ public class Player : MonoBehaviour
 
     public void SetVolumeFromSlider()
     {
-        SetVolume(soundSlider.value);   
+        SetVolume(soundSlider.value);
     }
 
     public void RefreshSlider(float _value)
     {
-        soundSlider.value = _value; 
+        soundSlider.value = _value;
     }
 
     public void MusicToggle()
@@ -154,8 +154,8 @@ public class Player : MonoBehaviour
         }
     }
 
-        // Update is called once per frame
-        void Update() // Runs at frame-rate and is best for input systems or player movement
+    // Update is called once per frame
+    void Update() // Runs at frame-rate and is best for input systems or player movement
     {
         if (volume.profile.TryGet<Vignette>(out vignette))
         {
@@ -164,6 +164,7 @@ public class Player : MonoBehaviour
                 vignette.intensity.value -= Time.deltaTime;
                 vignette.intensity.overrideState = true;
                 speed = 0.08f;
+                rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
         if (yourName.Length <= 12 && yourName.Length > 0)
@@ -192,10 +193,10 @@ public class Player : MonoBehaviour
         }
         if (isPlaying == true && isMoving == true)
         {
-                foreach (GameObject gameObject in autoMoveNPCs)
-                {
-                    gameObject.GetComponent<CharacterMove2>().autoMove = true;
-                }
+            foreach (GameObject gameObject in autoMoveNPCs)
+            {
+                gameObject.GetComponent<CharacterMove2>().autoMove = true;
+            }
 
             if (this.GetComponent<Dialogue>().text2.text != "Can I have a blue cappunchino?" && newPoint == false)
             {
@@ -212,7 +213,7 @@ public class Player : MonoBehaviour
                 coffeeMachine.GetComponent<BoxCollider2D>().enabled = true;
             }
 
-         
+
             if (this.GetComponent<Dialogue>().assignedTask == true && newPoint == false)
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
@@ -251,8 +252,8 @@ public class Player : MonoBehaviour
 
         if (moveInput.x > 0)
         {
-           // Debug.Log("Right");
-            if (-moveInput.y !< 0)
+            // Debug.Log("Right");
+            if (-moveInput.y! < 0)
             {
                 playerAnim.SetBool("sideways", false);
                 playerAnim.SetBool("forward", false);
@@ -268,25 +269,25 @@ public class Player : MonoBehaviour
         }
         if (moveInput.x < 0)
         {
-          //  Debug.Log("Left");
-          if (-moveInput.y !< 0)
+            //  Debug.Log("Left");
+            if (-moveInput.y! < 0)
             {
-                 playerAnim.SetBool("sideways", false);
+                playerAnim.SetBool("sideways", false);
                 playerAnim.SetBool("forward", false);
                 playerAnim.SetBool("backwards", true);
             }
-          else
+            else
             {
                 playerAnim.SetBool("sideways", true);
                 this.GetComponent<SpriteRenderer>().flipX = false;
                 playerAnim.SetBool("forward", false);
                 playerAnim.SetBool("backwards", false);
             }
-         
+
         }
         if (-moveInput.y > 0)
         {
-           // Debug.Log("Up");
+            // Debug.Log("Up");
             playerAnim.SetBool("sideways", false);
             playerAnim.SetBool("forward", true);
             playerAnim.SetBool("backwards", false);
@@ -325,7 +326,7 @@ public class Player : MonoBehaviour
         {
             manager.GetComponent<Animator>().SetBool("corrupted", true);
             manager.GetComponent<Animator>().SetBool("corrupted set", true);
-          //  rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
+            //  rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             rb.constraints |= RigidbodyConstraints2D.FreezePosition; // On
             doNotMove = true;
             speed = 0;
@@ -343,7 +344,7 @@ public class Player : MonoBehaviour
     {
         triggered = true;
     }
-        public void OnEndEdit(string text)
+    public void OnEndEdit(string text)
     {
         if (triggered == false)
         {
@@ -360,9 +361,9 @@ public class Player : MonoBehaviour
     {
         //Time.timeScale = 0;
         speed = 0;
-       pauseButton.GetComponent<Image>().enabled = false;
-      pauseButton2.GetComponent<Image>().enabled = true;
-        uiAnim.SetBool("pause", true );
+        pauseButton.GetComponent<Image>().enabled = false;
+        pauseButton2.GetComponent<Image>().enabled = true;
+        uiAnim.SetBool("pause", true);
         pauseScreen.SetActive(true);
         isPaused = true;
         playerAnim.SetBool("sideways", false);
@@ -376,7 +377,7 @@ public class Player : MonoBehaviour
     public void unPauseButton()
     {
         //Time.timeScale = 1;
-       pauseButton.GetComponent<Image>().enabled = true;
+        pauseButton.GetComponent<Image>().enabled = true;
         pauseButton2.GetComponent<Image>().enabled = false;
         pauseScreen.SetActive(false);
         uiAnim.SetBool("pause", false);
@@ -390,7 +391,7 @@ public class Player : MonoBehaviour
 
     public void accessibilityButton()
     {
-       accessibilityCanvas.SetActive(true);
+        accessibilityCanvas.SetActive(true);
     }
 
     public void OptionsMenu()
@@ -400,7 +401,7 @@ public class Player : MonoBehaviour
 
     public void VolumeChange()
     {
-       
+
     }
 
     public void backOptionsMenu()
@@ -410,6 +411,16 @@ public class Player : MonoBehaviour
     public void backAccessiblityButton()
     {
         accessibilityCanvas.SetActive(false);
+    }
+
+    public void Attack(InputAction.CallbackContext ctx)
+        {
+        if (yourName.Length <= 12 && yourName.Length < 1 && isPlaying == true && menuText.GetComponent<TextMeshProUGUI>().text == "Hello, you must be the new employee. Welcome to Steamlight Cafe, I will be your manager. My job is to overlook employees like you to see how well you do your shift.")
+        {
+            value1 = true;
+            menuText.GetComponent<TextMeshProUGUI>().text = "What's your name?";
+            inputField.SetActive(true);
+        }
     }
 
     public void Move(InputAction.CallbackContext ctx)
