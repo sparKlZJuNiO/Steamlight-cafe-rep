@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
    [SerializeField] float speed = 0.05f;
   public bool isMoving;
    bool isPlaying = false;
+    [SerializeField] float health = 100;
     bool isPaused = false;
     [SerializeField] GameObject filter;
     GameObject[] autoMoveNPCs;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     bool value1;
     float timer = 12f;
     GameObject manager;
+    [SerializeField] bool doNotMove;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -157,11 +159,12 @@ public class Player : MonoBehaviour
     {
         if (volume.profile.TryGet<Vignette>(out vignette))
         {
-            if (vignette.intensity.value > 1)
+            if (vignette.intensity.value > 0.1f)
             {
                 vignette.intensity.value -= Time.deltaTime;
+                vignette.intensity.overrideState = true;
+                speed = 0.08f;
             }
-            vignette.intensity.overrideState = true;
         }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
@@ -303,7 +306,11 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate() // Runs after all updates and is best for post processing or camera movement
     {
-        
+        if (vignette.intensity.value > 0)
+        {
+            timer = 5;
+            timer -= Time.deltaTime;
+        }
     }
 
     public void PlayButton()
@@ -318,7 +325,12 @@ public class Player : MonoBehaviour
         {
             manager.GetComponent<Animator>().SetBool("corrupted", true);
             manager.GetComponent<Animator>().SetBool("corrupted set", true);
-                  if (volume.profile.TryGet<Vignette>(out vignette))
+          //  rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
+            rb.constraints |= RigidbodyConstraints2D.FreezePosition; // On
+            doNotMove = true;
+            speed = 0;
+            checkpointUI.gameObject.GetComponent<Image>().color = Color.green;
+            if (volume.profile.TryGet<Vignette>(out vignette))
             {
 
                 vignette.intensity.value = 0.554f;
@@ -402,7 +414,7 @@ public class Player : MonoBehaviour
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        if (isPlaying == true && !isPaused && isMoving == true)
+        if (isPlaying == true && !isPaused && isMoving == true && doNotMove == false)
         {
             moveInput = ctx.ReadValue<Vector2>();
 
