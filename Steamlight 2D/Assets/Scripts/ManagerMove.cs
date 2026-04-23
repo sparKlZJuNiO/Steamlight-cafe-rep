@@ -43,7 +43,7 @@ public class ManagerMove : MonoBehaviour
         {
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
-            rb.position = new Vector3(-12.0699997f, -15.6099997f, -3.4000001f);
+            rb.position = new Vector3(-15.5f, -10.2200003f, -0.949999988f);
             anim.SetBool("walking", false);
         }
     }

@@ -37,7 +37,7 @@ public class CharacterMove : MonoBehaviour
         }
       if (plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee")
         {
-            this.gameObject.transform.position = new Vector3(5.20200014f, -3.70799994f, -0.280000001f);
+            
         }
     }
 

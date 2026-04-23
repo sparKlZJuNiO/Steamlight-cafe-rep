@@ -211,6 +211,12 @@ public class Player : MonoBehaviour
             if (this.GetComponent<Dialogue>().text2.text == "Can I have a blue cappunchino?")
             {
                 coffeeMachine.GetComponent<BoxCollider2D>().enabled = true;
+                timer = 3f;
+                timer -= Time.deltaTime;
+                if (timer < 0)
+                {
+                    this.GetComponent<Dialogue>().text2.text = "PRESS E TO CONTINUE DIALOGUE";
+                }
             }
 
 
@@ -228,6 +234,16 @@ public class Player : MonoBehaviour
             if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
             {
                 checkMark.GetComponent<Image>().enabled = true;
+            }
+            if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
+            {
+                float xDiff = waiterLinePointB.transform.position.x - arrowObject.transform.position.x;
+                float yDiff = waiterLinePointB.transform.position.y - arrowObject.transform.position.y;
+
+                float radians = Mathf.Atan2(yDiff, xDiff);
+                float degrees = radians * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
             }
 
             if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee" || newPoint == true)

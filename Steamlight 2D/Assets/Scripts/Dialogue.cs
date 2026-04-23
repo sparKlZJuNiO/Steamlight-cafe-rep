@@ -15,7 +15,7 @@ public class Dialogue : MonoBehaviour
    public bool dialogueToggle;
     bool tick;
    public bool tick2;
-   [SerializeField] float wait = 5;
+   [SerializeField] float wait = 1.6f;
     public bool assignedTask;
     GameObject coffeeMachine;
 
@@ -64,15 +64,14 @@ public class Dialogue : MonoBehaviour
     {
         foreach (GameObject gameObject in NPCs)
         {
-            if (text2.enabled == true)
+            if (text2.GetComponent<TextMeshProUGUI>().IsActive() == true)
             { 
                 tick = true;
                 dialogueToggle = true;
                 wait -= Time.deltaTime;
-                if (wait < 1f && tick == true)
+                if (wait <= 2f && tick == true)
                 {
                     text2.text = "PRESS E TO CONTINUE DIALOGUE";
-                    wait = 5f;
                 }
             }
         }
@@ -83,7 +82,7 @@ public class Dialogue : MonoBehaviour
         if (value == true && tick == true && tick2 == false)
         {
                 //  Debug.Log("hERE");
-                wait = 0;
+                wait = 5f;
                 text2.text = "Can I have a blue cappunchino?";
                 dialogueToggle = false;
                 tick = false;
