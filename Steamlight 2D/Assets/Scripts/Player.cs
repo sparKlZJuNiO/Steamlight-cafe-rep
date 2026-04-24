@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     float timer = 7f;
     GameObject manager;
     [SerializeField] bool doNotMove;
+    [SerializeField] GameObject waiter2;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -193,10 +194,7 @@ public class Player : MonoBehaviour
         }
         if (isPlaying == true && isMoving == true)
         {
-            foreach (GameObject gameObject in autoMoveNPCs)
-            {
-                gameObject.GetComponent<CharacterMove2>().autoMove = true;
-            }
+           waiter2.gameObject.GetComponent<CharacterMove2>().autoMove = true;
 
             if (this.GetComponent<Dialogue>().text2.text != "Can I have a blue cappunchino?" && newPoint == false)
             {

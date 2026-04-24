@@ -6,6 +6,8 @@ public class CoffeeMakerScript : MonoBehaviour
     GameObject plr;
     [SerializeField] float waitTime = 10;
     [SerializeField] public bool coffeeGiven;
+    float color = 3f;
+    [SerializeField] float stopValue;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,12 +52,61 @@ public class CoffeeMakerScript : MonoBehaviour
         if (this.gameObject.GetComponent<Animator>().GetBool("Wait") == true)
         {
             waitTime -= Time.deltaTime;
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f); // Yellow
+            if (waitTime < 9)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f); // White
+            }
+            if (waitTime < 7)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f); // Yellow
+            }
+            if (waitTime < 5)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f); // White
+            }
+            if (waitTime < 4)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f); // Yellow
+            }
+            if (waitTime < 2)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f); // White
+            }
+            if (waitTime < 1)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.52f, 1.0f, 0.0f); // Green
+            }
+            /*  switch (waitTime)
+              {
+                  case 9:
+                      this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+                      break;
+                 case 7:
+                      this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f);
+                      break;
+                  case 5:
+                      this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+                      break;
+                  case 4:
+                      this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f);
+                      break;
+              }*/
         }
 
         if (waitTime <= 0)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
             this.gameObject.GetComponent<Animator>().SetBool("Done", true);
+
+            for (color = 1.0f; color < 1.3; color++)
+            {
+                if (color < 1.3f && color > 1.0f)
+                {
+                    float newNum = (float)color;
+                    this.gameObject.GetComponent<SpriteRenderer>().color -= new Color(newNum + -1.7f, newNum + -1.7f, newNum + -1.7f, 0) * Time.deltaTime; // White
+                }
+            }
         }
         if (coffeeGiven == true && plr.GetComponent<Dialogue>().tick2 == false)
         {

@@ -60,6 +60,7 @@ public class CharacterMove2 : MonoBehaviour
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
             anim.SetBool("walking", false);
             autoMove = false;
+            rb.position = new Vector3(5.03000021f, -9.36999989f, -2.44000006f);
         }
     }
 }
