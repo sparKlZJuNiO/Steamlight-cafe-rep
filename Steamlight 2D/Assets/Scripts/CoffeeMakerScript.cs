@@ -55,7 +55,7 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f); // Yellow
             if (waitTime < 9)
             {
-                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f); // White
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.8902f, 0.7490f); // White #FFE3BF
             }
             if (waitTime < 7)
             {
@@ -63,7 +63,7 @@ public class CoffeeMakerScript : MonoBehaviour
             }
             if (waitTime < 5)
             {
-                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f); // White
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.8902f, 0.7490f); // White
             }
             if (waitTime < 4)
             {
@@ -71,7 +71,7 @@ public class CoffeeMakerScript : MonoBehaviour
             }
             if (waitTime < 2)
             {
-                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f); // White
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.8902f, 0.7490f); // White
             }
             if (waitTime < 1)
             {
