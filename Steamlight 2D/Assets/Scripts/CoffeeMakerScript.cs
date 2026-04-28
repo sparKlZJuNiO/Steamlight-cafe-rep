@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.U2D.IK;
+using UnityEngine.UI;
 
 public class CoffeeMakerScript : MonoBehaviour
 {
@@ -10,16 +12,31 @@ public class CoffeeMakerScript : MonoBehaviour
     [SerializeField] float stopValue;
     [SerializeField] GameObject NPC;
     [SerializeField] GameObject[] chairs;
+    [SerializeField] Image[] CoffeeColours;
+    bool redColour;
+    bool greenColour;
+    bool blueColour;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true)
+            {
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = true;
+            }
+        }
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true && blueColour == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
             NPC.SetActive(false);
             chairs[0].SetActive(false);
             chairs[1].SetActive(true);
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = false;
+            }
         }
 
         if (waitTime < 1)
@@ -50,6 +67,25 @@ public class CoffeeMakerScript : MonoBehaviour
     void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player");
+    }
+
+   public void ColourRed()
+    {
+        redColour = true;
+        greenColour = false;
+        blueColour = false;
+    }
+    public void ColourBlue()
+    {
+        blueColour = true;
+        greenColour = false;
+        redColour = false;
+    }
+    public void ColourGreen()
+    {
+        greenColour = true;
+        blueColour = false;
+        redColour = false;
     }
 
     // Update is called once per frame
