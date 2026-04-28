@@ -199,8 +199,11 @@ public class Player : MonoBehaviour
         }
         if (timer <= -3f)
         {
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma.. you sound like your from Texas";
-            timer -= Time.deltaTime;
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma.. you sound New Yorkish..";
+        }
+        if (timer <= -6f)
+        {
+            menuText.GetComponent<TextMeshProUGUI>().text =  "Manager: Yea.. Was there for years..";
         }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {

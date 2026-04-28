@@ -19,6 +19,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] float wait = 1.6f;
     public bool assignedTask;
     GameObject coffeeMachine;
+    [SerializeField] GameObject coffeeCup;
 
     private void Awake() // Before initialization, good when the game is not loaded in
     {
@@ -101,6 +102,7 @@ public class Dialogue : MonoBehaviour
             text2.text = "Woman went to the restroom huh..";
             value = false;
             tick = false;
+            coffeeCup.SetActive(true);
             tick2 = true;
             plr.GetComponent<Animator>().SetBool("serving", false);
         }

@@ -79,10 +79,6 @@ public class CoffeeMakerScript : MonoBehaviour
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.8902f, 0.7490f); // White
             }
-            if (waitTime < 1)
-            {
-                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.52f, 1.0f, 0.0f); // Green
-            }
             /*  switch (waitTime)
               {
                   case 9:
@@ -98,6 +94,10 @@ public class CoffeeMakerScript : MonoBehaviour
                       this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.980f, 0.0f);
                       break;
               }*/
+            if (this.gameObject.GetComponent<Animator>().GetBool("Wait") == true)
+            {
+
+            }
         }
 
         if (waitTime <= 0)
@@ -110,7 +110,7 @@ public class CoffeeMakerScript : MonoBehaviour
                 if (color < 1.3f && color > 1.0f)
                 {
                     float newNum = (float)color;
-                    this.gameObject.GetComponent<SpriteRenderer>().color -= new Color(newNum + -1.7f, newNum + -1.7f, newNum + -1.7f, 0) * Time.deltaTime; // White
+                    this.gameObject.GetComponent<SpriteRenderer>().color -= new Color(color, color, color, 0) * Time.deltaTime; // White
                 }
             }
         }
