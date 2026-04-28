@@ -33,10 +33,12 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] bool newPoint;
     bool value1;
-    float timer = 7f;
+    bool value2;
+   [SerializeField] float timer = 7f;
     GameObject manager;
     [SerializeField] bool doNotMove;
     [SerializeField] GameObject waiter2;
+    bool dialogue2;
 
     [Header("Animator")]
     Animator playerAnim;
@@ -168,6 +170,38 @@ public class Player : MonoBehaviour
                 rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
+        if (dialogue2 == true)
+        {
+            menuBackground.SetActive(true);
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            timer -= Time.deltaTime;
+            if (timer < 2)
+            {
+                value2 = true;
+            }
+        }
+        if (value2 == true && isPlaying == true)
+        {
+            menuBackground.SetActive(true);
+            menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about things...";
+            timer -= Time.deltaTime;
+        }
+        if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
+        {
+            menuBackground.SetActive(true);
+            menuText.GetComponent<TextMeshProUGUI>().text = "Manager: Hey, you from around here?";
+            timer -= Time.deltaTime;
+        }
+        if (coffeeMachine.GetComponent<Animator>().GetBool("Done") == true)
+        {
+            menuBackground.SetActive(false);
+            menuText.GetComponent<TextMeshProUGUI>().text = "";
+        }
+        if (timer <= -3f)
+        {
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma.. you sound like your from Texas";
+            timer -= Time.deltaTime;
+        }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
             isMoving = true;
@@ -209,7 +243,6 @@ public class Player : MonoBehaviour
             if (this.GetComponent<Dialogue>().text2.text == "Can I have a blue cappunchino?")
             {
                 coffeeMachine.GetComponent<BoxCollider2D>().enabled = true;
-                timer = 3f;
                 timer -= Time.deltaTime;
                 if (timer < 0)
                 {
@@ -244,7 +277,7 @@ public class Player : MonoBehaviour
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
             }
 
-            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee" || newPoint == true)
+            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." || newPoint == true)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
                 checkpointUI.SetActive(true);
@@ -344,6 +377,8 @@ public class Player : MonoBehaviour
             rb.constraints |= RigidbodyConstraints2D.FreezePosition; // On
             doNotMove = true;
             speed = 0;
+            Debug.Log("Check");
+            dialogue2 = true;
             checkpointUI.gameObject.GetComponent<Image>().color = Color.green;
             if (volume.profile.TryGet<Vignette>(out vignette))
             {

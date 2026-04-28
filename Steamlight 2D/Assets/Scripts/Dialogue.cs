@@ -15,7 +15,8 @@ public class Dialogue : MonoBehaviour
    public bool dialogueToggle;
     bool tick;
    public bool tick2;
-   [SerializeField] float wait = 1.6f;
+    public bool tick3;
+    [SerializeField] float wait = 1.6f;
     public bool assignedTask;
     GameObject coffeeMachine;
 
@@ -75,6 +76,13 @@ public class Dialogue : MonoBehaviour
                 }
             }
         }
+        if (tick2 == true && text2.text == "PRESS E TO CONTINUE DIALOGUE")
+        {
+            tick3 = true;
+            text2.text = "But, thank you for your order..";
+            dialogueToggle = false;
+            tick = false;
+        }
     }
 
     public void Interact(InputAction.CallbackContext ctx)
@@ -90,7 +98,7 @@ public class Dialogue : MonoBehaviour
         }
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
         {
-            text2.text = "Thanks for the coffee";
+            text2.text = "Woman went to the restroom huh..";
             value = false;
             tick = false;
             tick2 = true;

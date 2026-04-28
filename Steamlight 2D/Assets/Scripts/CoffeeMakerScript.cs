@@ -8,12 +8,18 @@ public class CoffeeMakerScript : MonoBehaviour
     [SerializeField] public bool coffeeGiven;
     float color = 3f;
     [SerializeField] float stopValue;
+    [SerializeField] GameObject NPC;
+    [SerializeField] GameObject[] chairs;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
+            NPC.SetActive(false);
+            chairs[0].SetActive(false);
+            chairs[1].SetActive(true);
         }
 
         if (waitTime < 1)
