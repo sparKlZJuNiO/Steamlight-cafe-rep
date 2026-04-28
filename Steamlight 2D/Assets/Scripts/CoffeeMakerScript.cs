@@ -51,9 +51,13 @@ public class CoffeeMakerScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true)
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true && blueColour == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = false;
+            }
         }
         if (waitTime < 1)
         {
