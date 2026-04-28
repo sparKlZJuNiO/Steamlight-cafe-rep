@@ -1072,7 +1072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 44019202}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1315214038}
+        m_TargetAssemblyTypeName: CoffeeMakerScript, Assembly-CSharp
+        m_MethodName: ColourRed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &44019202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1092,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44019199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -14851,7 +14863,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 900328596}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1315214038}
+        m_TargetAssemblyTypeName: CoffeeMakerScript, Assembly-CSharp
+        m_MethodName: ColourGreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900328596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14859,7 +14883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900328593}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -22499,9 +22523,9 @@ MonoBehaviour:
   - {fileID: 1573794611}
   - {fileID: 1774445206}
   CoffeeColours:
-  - {fileID: 44019201}
-  - {fileID: 900328595}
-  - {fileID: 1981915716}
+  - {fileID: 44019202}
+  - {fileID: 900328596}
+  - {fileID: 1981915717}
 --- !u!1 &1320335564
 GameObject:
   m_ObjectHideFlags: 0
@@ -32957,7 +32981,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1981915717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1315214038}
+        m_TargetAssemblyTypeName: CoffeeMakerScript, Assembly-CSharp
+        m_MethodName: ColourBlue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1981915717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32965,7 +33001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981915714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
