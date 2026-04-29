@@ -172,10 +172,10 @@ public class Player : MonoBehaviour
                 rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
-        if (menuText.GetComponent<TextMeshProUGUI>().text == "Erm...yes...yes..Just mad about these people...they always prsent nice..")
+        if (menuText.GetComponent<TextMeshProUGUI>().text == "Erm...yes...yes..Just mad about these people...they always prsent nice.." || value2 == true)
         {
-            checkpointCross.SetActive(false);
-            checkpointTick.SetActive(true);
+            checkpointCross.GetComponent<Image>().enabled = false;
+            checkpointTick.GetComponent<Image>().enabled = true;
         }
         if (dialogue2 == true)
         {
@@ -186,6 +186,11 @@ public class Player : MonoBehaviour
             {
                 value2 = true;
             }
+        }
+        if (plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." )
+        {
+            checkpointCross.GetComponent<Image>().enabled = true;
+            checkpointTick.GetComponent<Image>().enabled = false;
         }
         if (value2 == true && isPlaying == true)
         {
@@ -294,9 +299,7 @@ public class Player : MonoBehaviour
             if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." || newPoint == true)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
-                checkpointCross.SetActive(true);
-                checkpointText.SetActive(true);
-                checkpointTick.SetActive(false);
+
                 float xDiff2 = managerPointA.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = managerPointA.transform.position.y - arrowObject.transform.position.y;
 
