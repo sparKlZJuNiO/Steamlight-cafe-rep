@@ -40,7 +40,6 @@ public class Dialogue : MonoBehaviour
         {
             value = true;
             textObject.SetActive(true);
-            text2.text = plr.GetComponent<Player>().yourName + ": Hello ma’am what can I do for you…";
         }
       
     }

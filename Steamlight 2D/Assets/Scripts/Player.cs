@@ -65,7 +65,9 @@ public class Player : MonoBehaviour
     [SerializeField] Volume volume;
     ColorAdjustments colorAdjustments;
     Vignette vignette;
-    [SerializeField] GameObject checkpointUI;
+    [SerializeField] GameObject checkpointTick;
+    [SerializeField] GameObject checkpointText;
+    [SerializeField] GameObject checkpointCross;
 
     bool triggered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -170,6 +172,11 @@ public class Player : MonoBehaviour
                 rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
+        if (menuText.GetComponent<TextMeshProUGUI>().text == "Erm...yes...yes..Just mad about these people...they always prsent nice..")
+        {
+            checkpointCross.SetActive(false);
+            checkpointTick.SetActive(true);
+        }
         if (dialogue2 == true)
         {
             menuBackground.SetActive(true);
@@ -183,14 +190,18 @@ public class Player : MonoBehaviour
         if (value2 == true && isPlaying == true)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about things...";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about these people...they always prsent nice..";
             timer -= Time.deltaTime;
         }
         if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "Manager: Hey, you from around here?";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, you from around here?";
             timer -= Time.deltaTime;
+        }
+        if (timer >= 5)
+        {
+            timer = 0;
         }
         if (coffeeMachine.GetComponent<Animator>().GetBool("Done") == true)
         {
@@ -203,7 +214,7 @@ public class Player : MonoBehaviour
         }
         if (timer <= -6f)
         {
-            menuText.GetComponent<TextMeshProUGUI>().text =  "Manager: Yea.. Was there for years..";
+            menuText.GetComponent<TextMeshProUGUI>().text =  "Second Waiter: Yea.. Was there for years..";
         }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
@@ -283,7 +294,9 @@ public class Player : MonoBehaviour
             if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." || newPoint == true)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
-                checkpointUI.SetActive(true);
+                checkpointCross.SetActive(true);
+                checkpointText.SetActive(true);
+                checkpointTick.SetActive(false);
                 float xDiff2 = managerPointA.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = managerPointA.transform.position.y - arrowObject.transform.position.y;
 
@@ -382,7 +395,7 @@ public class Player : MonoBehaviour
             speed = 0;
             Debug.Log("Check");
             dialogue2 = true;
-            checkpointUI.gameObject.GetComponent<Image>().color = Color.green;
+
             if (volume.profile.TryGet<Vignette>(out vignette))
             {
 
