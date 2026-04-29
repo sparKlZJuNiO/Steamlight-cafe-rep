@@ -68,6 +68,16 @@ public class CoffeeMakerScript : MonoBehaviour
             coffeeGiven = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true)
+        {
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = false;
+            }
+        }
+    }
     void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player");

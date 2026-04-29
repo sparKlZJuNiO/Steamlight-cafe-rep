@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     bool isPaused = false;
     [SerializeField] GameObject filter;
     GameObject[] autoMoveNPCs;
-    [SerializeField] string yourName;
+    [SerializeField] public string yourName;
     [SerializeField] GameObject coffeeMachinePointB;
     [SerializeField] GameObject managerPointA;
     [SerializeField] GameObject waiterLinePointB;

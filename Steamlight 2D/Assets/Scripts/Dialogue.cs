@@ -40,7 +40,7 @@ public class Dialogue : MonoBehaviour
         {
             value = true;
             textObject.SetActive(true);
-            
+            text2.text = plr.GetComponent<Player>().yourName + ": Hello ma’am what can I do for you…";
         }
       
     }
@@ -92,7 +92,7 @@ public class Dialogue : MonoBehaviour
         {
                 //  Debug.Log("hERE");
                 wait = 5f;
-                text2.text = "Can I have a blue cappunchino?";
+                text2.text = "Can I have a blue hot chocolate?";
                 dialogueToggle = false;
                 tick = false;
                 assignedTask = true;
