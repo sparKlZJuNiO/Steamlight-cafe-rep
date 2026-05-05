@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     Animator playerAnim;
     [SerializeField] Animator uiAnim;
 
+    [SerializeField] bool managerBool1;
+
     [Header("UI")]
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject accessibilityCanvas;
@@ -175,32 +177,38 @@ public class Player : MonoBehaviour
                 rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
-        if (menuText.GetComponent<TextMeshProUGUI>().text == yourName + ": Are you okay manager?" || dialoguePart1 == true)
+     /*   if (menuText.GetComponent<TextMeshProUGUI>().text == yourName + ": Are you okay manager?" || dialoguePart1 == true)
         {
             //checkpointCross.GetComponent<Image>().enabled = false;
             checkpointTick.GetComponent<Image>().enabled = true;
-            menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about these people...they always present nice.";
+         
             dialoguePart2 = true;
             timer -= Time.deltaTime;
             if (timer < -11)
             {
                 value3 = true;
+                menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about these people...they always present nice.";
             }
         }
         if (menuText.GetComponent<TextMeshProUGUI>().text == "Erm...yes...yes..Just mad about these people...they always present nice." || dialoguePart2 == true && timer <= -11)
         {
             timer -= Time.deltaTime;
-            menuText.GetComponent<TextMeshProUGUI>().text = "F";
+     
             if (timer < -14)
             {
                 value3 = true;
+                menuText.GetComponent<TextMeshProUGUI>().text = "F";
             }
-        }
+        }*/
         
             if (timer < 2 && dialogue2 == true && dialoguePart1 == false)
             {
                 value2 = true;
             }
+        if (dialoguePart1 == true)
+        {
+            timer -= Time.deltaTime;
+        }
         if (plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." && plr.GetComponent<Dialogue>().text2.text != yourName + ": Are you okay manager?" && dialoguePart1 == false)
         {
             checkpointCross.GetComponent<Image>().enabled = true;
@@ -213,10 +221,10 @@ public class Player : MonoBehaviour
         if (value2 == true && isPlaying == true && timer < 1)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "d";
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
             timer -= Time.deltaTime;
         }
-        if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
+        if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && checkpointTick.GetComponent<Image>().enabled == false)
         {
             menuBackground.SetActive(true);
             menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, you from around here?";
@@ -226,18 +234,18 @@ public class Player : MonoBehaviour
         {
             timer = 0;
         }
-        if (coffeeMachine.GetComponent<Animator>().GetBool("Done") == true)
+        if (coffeeMachine.GetComponent<Animator>().GetBool("Done") == true || coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && menuText.GetComponent<TextMeshProUGUI>().text == "Second Waiter: Yea.. Was there for years..")
         {
             menuBackground.SetActive(false);
             menuText.GetComponent<TextMeshProUGUI>().text = "";
         }
-        if (timer <= -3f)
+        if (timer <= -3f && checkpointTick.GetComponent<Image>().enabled == false)
         {
             menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma.. you sound New Yorkish..";
         }
-        if (timer <= -6f)
+        if (timer <= -6f && checkpointTick.GetComponent<Image>().enabled == false)
         {
-            menuText.GetComponent<TextMeshProUGUI>().text =  "Second Waiter: Yea.. Was there for years..";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Yea.. Was there for years..";
         }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
@@ -420,7 +428,9 @@ public class Player : MonoBehaviour
             speed = 0;
             checkpointCross.GetComponent<Image>().enabled = false;
             Debug.Log("Check");
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
             dialogue2 = true;
+            checkpointTick.GetComponent<Image>().enabled = true;
 
             if (volume.profile.TryGet<Vignette>(out vignette))
             {
@@ -543,10 +553,15 @@ public class Player : MonoBehaviour
         if (dialogue2 == true && dialoguePart1 == false)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Manager: Erm...yes...yes..Just mad about these people...they always present nice.";
             checkpointCross.GetComponent<Image>().enabled = false;
             dialoguePart1 = true;
-            timer -= Time.deltaTime;
+            if (dialoguePart1 == true && menuText.GetComponent<TextMeshProUGUI>().text == "Manager: Erm...yes...yes..Just mad about these people...they always present nice.")
+            {
+                {
+                    menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": So, one of the customers just left without her order. She didn’t even pay. It’s like she vanished.";
+                }
+            }
         }
       }
     }
