@@ -13,6 +13,7 @@ TagManager:
   - autoMoveNPC
   - Manager
   - ManagerPoint
+  - Door
   layers:
   - Default
   - TransparentFX

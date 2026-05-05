@@ -9,6 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
 using System.ComponentModel;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Player : MonoBehaviour
 {
@@ -34,12 +35,14 @@ public class Player : MonoBehaviour
     [SerializeField] bool newPoint;
     bool value1;
     bool value2;
-   [SerializeField] float timer = 7f;
+    bool value3;
+    [SerializeField] float timer = 7f;
     GameObject manager;
     [SerializeField] bool doNotMove;
     [SerializeField] GameObject waiter2;
     bool dialogue2;
-
+    [SerializeField] bool dialoguePart1;
+    [SerializeField] bool dialoguePart2;
     [Header("Animator")]
     Animator playerAnim;
     [SerializeField] Animator uiAnim;
@@ -172,30 +175,45 @@ public class Player : MonoBehaviour
                 rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
-        if (menuText.GetComponent<TextMeshProUGUI>().text == "Erm...yes...yes..Just mad about these people...they always prsent nice.." || value2 == true)
+        if (menuText.GetComponent<TextMeshProUGUI>().text == yourName + ": Are you okay manager?" || dialoguePart1 == true)
         {
-            checkpointCross.GetComponent<Image>().enabled = false;
+            //checkpointCross.GetComponent<Image>().enabled = false;
             checkpointTick.GetComponent<Image>().enabled = true;
-        }
-        if (dialogue2 == true)
-        {
-            menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about these people...they always present nice.";
+            dialoguePart2 = true;
             timer -= Time.deltaTime;
-            if (timer < 2)
+            if (timer < -11)
+            {
+                value3 = true;
+            }
+        }
+        if (menuText.GetComponent<TextMeshProUGUI>().text == "Erm...yes...yes..Just mad about these people...they always present nice." || dialoguePart2 == true && timer <= -11)
+        {
+            timer -= Time.deltaTime;
+            menuText.GetComponent<TextMeshProUGUI>().text = "F";
+            if (timer < -14)
+            {
+                value3 = true;
+            }
+        }
+        
+            if (timer < 2 && dialogue2 == true && dialoguePart1 == false)
             {
                 value2 = true;
             }
-        }
-        if (plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." )
+        if (plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." && plr.GetComponent<Dialogue>().text2.text != yourName + ": Are you okay manager?" && dialoguePart1 == false)
         {
             checkpointCross.GetComponent<Image>().enabled = true;
-            checkpointTick.GetComponent<Image>().enabled = false;
+            checkpointText.SetActive(true);
         }
-        if (value2 == true && isPlaying == true)
+        else
+        {
+            checkpointCross.GetComponent<Image>().enabled = false;
+        }
+        if (value2 == true && isPlaying == true && timer < 1)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "Erm...yes...yes..Just mad about these people...they always prsent nice..";
+            menuText.GetComponent<TextMeshProUGUI>().text = "d";
             timer -= Time.deltaTime;
         }
         if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
@@ -388,6 +406,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Door"))
+        {
+            collision.gameObject.GetComponent<Animator>().SetBool("open", true);
+        }
         if (collision.CompareTag("ManagerPoint") && newPoint == true)
         {
             manager.GetComponent<Animator>().SetBool("corrupted", true);
@@ -396,6 +418,7 @@ public class Player : MonoBehaviour
             rb.constraints |= RigidbodyConstraints2D.FreezePosition; // On
             doNotMove = true;
             speed = 0;
+            checkpointCross.GetComponent<Image>().enabled = false;
             Debug.Log("Check");
             dialogue2 = true;
 
@@ -408,7 +431,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnSelect(string text)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Door"))
+        {
+            collision.gameObject.GetComponent<Animator>().SetBool("open", false);
+        }
+    }
+
+        public void OnSelect(string text)
     {
         triggered = true;
     }
@@ -507,4 +538,15 @@ public class Player : MonoBehaviour
             }
         }
     }
-}
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (dialogue2 == true && dialoguePart1 == false)
+        {
+            menuBackground.SetActive(true);
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            checkpointCross.GetComponent<Image>().enabled = false;
+            dialoguePart1 = true;
+            timer -= Time.deltaTime;
+        }
+      }
+    }
