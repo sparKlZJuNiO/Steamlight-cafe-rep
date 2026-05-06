@@ -8567,7 +8567,7 @@ GameObject:
   - component: {fileID: 500698890}
   m_Layer: 0
   m_Name: PointA
-  m_TagString: Trigger2
+  m_TagString: Trigger3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

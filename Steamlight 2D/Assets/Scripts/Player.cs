@@ -173,8 +173,8 @@ public class Player : MonoBehaviour
             {
                 vignette.intensity.value -= Time.deltaTime;
                 vignette.intensity.overrideState = true;
-                speed = 0.08f;
-                rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
+               // speed = 0.08f;
+              //  rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             }
         }
      /*   if (menuText.GetComponent<TextMeshProUGUI>().text == yourName + ": Are you okay manager?" || dialoguePart1 == true)
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
         if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && checkpointTick.GetComponent<Image>().enabled == false)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, you from around here?";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, you look different..";
             timer -= Time.deltaTime;
         }
         if (timer >= 5)
@@ -241,11 +241,11 @@ public class Player : MonoBehaviour
         }
         if (timer <= -3f && checkpointTick.GetComponent<Image>().enabled == false)
         {
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma.. you sound New Yorkish..";
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma...";
         }
         if (timer <= -6f && checkpointTick.GetComponent<Image>().enabled == false)
         {
-            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Yea.. Was there for years..";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: New York.. Was there for 25 years..but I shall return there in two years time";
         }
         if (yourName.Length <= 12 && yourName.Length > 0)
         {
@@ -422,9 +422,9 @@ public class Player : MonoBehaviour
             manager.GetComponent<Animator>().SetBool("corrupted", true);
             manager.GetComponent<Animator>().SetBool("corrupted set", true);
             //  rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
-            rb.constraints |= RigidbodyConstraints2D.FreezePosition; // On
+           // rb.constraints |= RigidbodyConstraints2D.FreezePosition; // On
             doNotMove = true;
-            speed = 0;
+          //  speed = 0;
             checkpointCross.GetComponent<Image>().enabled = false;
             Debug.Log("Check");
             //menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
@@ -433,7 +433,6 @@ public class Player : MonoBehaviour
 
             if (volume.profile.TryGet<Vignette>(out vignette))
             {
-
                 vignette.intensity.value = 0.554f;
                 vignette.intensity.overrideState = true;
             }

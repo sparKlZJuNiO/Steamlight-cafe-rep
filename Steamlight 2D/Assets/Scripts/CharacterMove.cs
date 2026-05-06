@@ -15,7 +15,7 @@ public class CharacterMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("npcTrigger2"))
+        if (collision.CompareTag("Trigger3"))
         {
             npcValue = true;
         }
@@ -33,7 +33,7 @@ public class CharacterMove : MonoBehaviour
     {
       if (plr.GetComponent<Dialogue>().value == false)
         {
-            rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+           // rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
         }
       if (plr.GetComponent<Dialogue>().text2.text == "Thanks for the coffee")
         {
@@ -51,8 +51,8 @@ public class CharacterMove : MonoBehaviour
         }
         else if (timer > 1.1f)
         {
-            rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
-            rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+          //  rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
+           // rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
             anim.SetBool("walking", false);
         }
     }
