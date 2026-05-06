@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
         }
         if (value2 == true && isPlaying == true && timer < 1)
         {
-            menuBackground.SetActive(true);
+            //menuBackground.SetActive(true);
             menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
             timer -= Time.deltaTime;
         }
@@ -309,9 +309,9 @@ public class Player : MonoBehaviour
 
             if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
             {
-                checkMark.GetComponent<Image>().enabled = true;
+                //checkMark.GetComponent<Image>().enabled = true;
             }
-            if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
+            if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true && newPoint == false)
             {
                 float xDiff = waiterLinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff = waiterLinePointB.transform.position.y - arrowObject.transform.position.y;
@@ -322,7 +322,7 @@ public class Player : MonoBehaviour
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
             }
 
-            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." || newPoint == true)
+            if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." && plr.GetComponent<Dialogue>().value2 == false)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
 
@@ -401,7 +401,6 @@ public class Player : MonoBehaviour
     {
         if (vignette.intensity.value > 0)
         {
-            timer = 5;
             timer -= Time.deltaTime;
         }
     }
@@ -418,7 +417,7 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<Animator>().SetBool("open", true);
         }
-        if (collision.CompareTag("ManagerPoint") && newPoint == true)
+        if (collision.CompareTag("Trigger2") && newPoint == true && plr.GetComponent<Dialogue>().value2 == true)
         {
             manager.GetComponent<Animator>().SetBool("corrupted", true);
             manager.GetComponent<Animator>().SetBool("corrupted set", true);
@@ -428,7 +427,7 @@ public class Player : MonoBehaviour
             speed = 0;
             checkpointCross.GetComponent<Image>().enabled = false;
             Debug.Log("Check");
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            //menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
             dialogue2 = true;
             checkpointTick.GetComponent<Image>().enabled = true;
 
@@ -548,20 +547,5 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void Interact(InputAction.CallbackContext ctx)
-    {
-        if (dialogue2 == true && dialoguePart1 == false)
-        {
-            menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "Manager: Erm...yes...yes..Just mad about these people...they always present nice.";
-            checkpointCross.GetComponent<Image>().enabled = false;
-            dialoguePart1 = true;
-            if (dialoguePart1 == true && menuText.GetComponent<TextMeshProUGUI>().text == "Manager: Erm...yes...yes..Just mad about these people...they always present nice.")
-            {
-                {
-                    menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": So, one of the customers just left without her order. She didn’t even pay. It’s like she vanished.";
-                }
-            }
-        }
-      }
+   
     }

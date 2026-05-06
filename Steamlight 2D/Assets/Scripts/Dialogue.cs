@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Dialogue : MonoBehaviour
 {
     public bool value = false;
+    public bool value2 = false;
 
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] public TextMeshProUGUI text2;
@@ -13,9 +14,11 @@ public class Dialogue : MonoBehaviour
     GameObject plr;
     public GameObject[] NPCs;
    public bool dialogueToggle;
-    bool tick;
+   public bool tick;
    public bool tick2;
     public bool tick3;
+    public bool tick4;
+    public bool tick5;
     [SerializeField] float wait = 1.6f;
     public bool assignedTask;
     GameObject coffeeMachine;
@@ -41,7 +44,12 @@ public class Dialogue : MonoBehaviour
             value = true;
             textObject.SetActive(true);
         }
-      
+        if (collision.CompareTag("Trigger2"))
+        {
+            value2 = true;
+            textObject.SetActive(true);
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -50,6 +58,10 @@ public class Dialogue : MonoBehaviour
         {
             value = true;
         }
+        if (collision.CompareTag("Trigger2"))
+        {
+            value2 = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -57,6 +69,11 @@ public class Dialogue : MonoBehaviour
         if (collision.CompareTag("Trigger"))
         {
             value = false;
+            textObject.SetActive(false);
+        }
+        if (collision.CompareTag("Trigger2"))
+        {
+            value2 = false;
             textObject.SetActive(false);
         }
     }
@@ -75,6 +92,16 @@ public class Dialogue : MonoBehaviour
                     text2.text = "PRESS E TO CONTINUE DIALOGUE";
                 }
             }
+            if (text2.GetComponent<TextMeshProUGUI>().IsActive() == true)
+            {
+                tick = true;
+                dialogueToggle = true;
+                wait -= Time.deltaTime;
+                if (wait <= 2f && tick4 == true || wait <= 2f && tick3 == true)
+                {
+                    text2.text = "PRESS E TO CONTINUE DIALOGUE";
+                }
+            }
         }
         if (tick2 == true && text2.text == "PRESS E TO CONTINUE DIALOGUE")
         {
@@ -82,6 +109,13 @@ public class Dialogue : MonoBehaviour
             text2.text = "But, thank you for your order..";
             dialogueToggle = false;
             tick = false;
+        }
+        if (tick3 == true && text2.text == "But, thank you for your order.." && tick == false && value2 == true)
+        {
+            tick5 = true;
+            text2.text = plr.GetComponent<Player>().yourName + ": Are you okay manager?";
+            dialogueToggle = false;
+            tick4 = false;
         }
     }
 
@@ -95,6 +129,15 @@ public class Dialogue : MonoBehaviour
                 dialogueToggle = false;
                 tick = false;
                 assignedTask = true;
+        }
+        if (value2 == true && tick4 == true && tick3 == false && tick == false)
+        {
+            //  Debug.Log("hERE");
+            wait = 5f;
+            text2.text = "Erm...yes...yes..Just mad about these people...they always present nice.";
+            dialogueToggle = false;
+            tick4 = false;
+            assignedTask = false;
         }
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
         {

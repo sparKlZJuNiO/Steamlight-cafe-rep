@@ -15,7 +15,7 @@ public class CharacterMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Trigger2"))
+        if (collision.CompareTag("npcTrigger2"))
         {
             npcValue = true;
         }
