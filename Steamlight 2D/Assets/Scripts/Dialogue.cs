@@ -116,14 +116,11 @@ public class Dialogue : MonoBehaviour
         if (tick3 == true && text2.text == "But, thank you for your order.." && tick == false && value2 == true && dialogue2 == false)
         {
             tick5 = true;
-            text2.text = plr.GetComponent<Player>().yourName + ": Are you okay manager?";
+            text2.text = plr.GetComponent<Player>().yourName + ": Are you okay manager?, Press E to Continue";
             dialogueToggle = false;
+            dialogue2 = true;
             tick4 = false;
-        }
-        if (tick5 == true && text2.text == "PRESS E TO CONTINUE DIALOGUE" && dialogue2 == false)
-        {
-            // text2.text = "EEEFF";
-            Debug.Log("Po");
+            
         }
     }
 
@@ -138,21 +135,18 @@ public class Dialogue : MonoBehaviour
                 tick = false;
                 assignedTask = true;
         }
-        if (value2 == true && text2.text == plr.GetComponent<Player>().yourName + ": Are you okay manager?")
+        if (value2 == true && text2.text == plr.GetComponent<Player>().yourName + ": Are you okay manager?, Press E to Continue")
         {
             //  Debug.Log("hERE");
             wait = 5f;
-            text2.text = "Manager: Erm...yes...yes..Just mad about these people...they always present nice.";
+            text2.text = "Manager: Erm...yes...yes..Just mad about these people...they always present nice. Press E to Continue";
             dialogueToggle = false;
             tick5 = true;
             coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven = false;
             assignedTask = false;
             dialogue2 = true;
         }
-        if (tick5 == true)
-        {
-            //text2.text = "Hey boss, one of the customers just left without her order. She didn’t even pay. It’s like she vanished.";
-        }
+
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
         {
             text2.text = "Woman went to the restroom huh..";

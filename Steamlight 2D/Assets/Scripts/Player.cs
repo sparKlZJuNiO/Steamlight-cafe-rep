@@ -205,11 +205,25 @@ public class Player : MonoBehaviour
             {
                 value2 = true;
             }
-        if (dialoguePart1 == true)
+        if (value2 == true && plr.GetComponent<Dialogue>().text2.text == "Manager: Erm...yes...yes..Just mad about these people...they always present nice. Press E to Continue" && plr.GetComponent<Dialogue>().tick5 == true)
+        {
+            manager.GetComponent<Animator>().SetBool("corrupted", false);
+            manager.GetComponent<Animator>().SetBool("corrupted set", false);
+            rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
+            doNotMove = false;
+            checkpointText.SetActive(false);
+            //  speed = 0;
+            checkpointCross.GetComponent<Image>().enabled = false;
+            Debug.Log("Check");
+            //menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            dialogue2 = false;
+            checkpointTick.GetComponent<Image>().enabled = false;
+        }
+            if (dialoguePart1 == true)
         {
             timer -= Time.deltaTime;
         }
-        if (plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." && plr.GetComponent<Dialogue>().text2.text != yourName + ": Are you okay manager?" && dialoguePart1 == false)
+        if (plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." && plr.GetComponent<Player>().yourName != ": Are you okay manager?, Press E to Continue" && dialoguePart1 == false)
         {
             checkpointCross.GetComponent<Image>().enabled = true;
             checkpointText.SetActive(true);
@@ -221,7 +235,7 @@ public class Player : MonoBehaviour
         if (value2 == true && isPlaying == true && timer < 1)
         {
             //menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?, Press E to Continue";
             timer -= Time.deltaTime;
         }
         if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && checkpointTick.GetComponent<Image>().enabled == false)
