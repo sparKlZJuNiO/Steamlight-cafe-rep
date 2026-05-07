@@ -10,6 +10,7 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
 using System.ComponentModel;
 using static UnityEngine.Rendering.DebugUI;
+using System.Runtime.InteropServices;
 
 public class Player : MonoBehaviour
 {
@@ -46,8 +47,10 @@ public class Player : MonoBehaviour
     [Header("Animator")]
     Animator playerAnim;
     [SerializeField] Animator uiAnim;
-
-    [SerializeField] bool managerBool1;
+    [SerializeField] GameObject door;
+    bool managerMoveBool;
+    [SerializeField] GameObject endScreen;
+    [SerializeField] public bool managerBool1;
 
     [Header("UI")]
     [SerializeField] GameObject canvas;
@@ -67,9 +70,9 @@ public class Player : MonoBehaviour
     [SerializeField] AudioMixer masterMixer;
     [SerializeField] Toggle togglePart;
     [SerializeField] Toggle vsyncToggle;
-    [SerializeField] Volume volume;
-    ColorAdjustments colorAdjustments;
-    Vignette vignette;
+    [SerializeField] public Volume volume;
+   public ColorAdjustments colorAdjustments;
+   public Vignette vignette;
     [SerializeField] GameObject checkpointTick;
     [SerializeField] GameObject checkpointText;
     [SerializeField] GameObject checkpointCross;
@@ -212,6 +215,7 @@ public class Player : MonoBehaviour
             rb.constraints = ~RigidbodyConstraints2D.FreezePosition; // Off
             doNotMove = false;
             checkpointText.SetActive(false);
+            managerBool1 = true;
             //  speed = 0;
             checkpointCross.GetComponent<Image>().enabled = false;
             Debug.Log("Check");
@@ -244,7 +248,7 @@ public class Player : MonoBehaviour
             menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, you look different..";
             timer -= Time.deltaTime;
         }
-        if (timer >= 5)
+        if (timer >= 5 && coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
         {
             timer = 0;
         }
@@ -279,7 +283,7 @@ public class Player : MonoBehaviour
             menuText.GetComponent<TextMeshProUGUI>().text = "Hello, you must be the new employee. Welcome to Steamlight Cafe, I will be your manager. My job is to overlook employees like you to see how well you do your shift.";
             timer -= Time.deltaTime;
         }
-        if (timer < 0 && yourName.Length <= 12 && yourName.Length < 1 && isPlaying == true)
+        if (timer < 3.5f && yourName.Length <= 12 && yourName.Length < 1 && isPlaying == true)
         {
             value1 = true;
             menuText.GetComponent<TextMeshProUGUI>().text = "What's your name?";
@@ -348,6 +352,7 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
                 newPoint = true;
+                door.GetComponent<BoxCollider2D>().isTrigger = true;
             }
         }
     }
@@ -430,6 +435,13 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Door"))
         {
             collision.gameObject.GetComponent<Animator>().SetBool("open", true);
+        }
+        if (collision.CompareTag("Manager"))
+        {
+            endScreen.SetActive(true);
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            menuBackground.SetActive(false);
+            plr.GetComponent<Dialogue>().textObject.SetActive(false);
         }
         if (collision.CompareTag("Trigger2") && newPoint == true && plr.GetComponent<Dialogue>().value2 == true)
         {

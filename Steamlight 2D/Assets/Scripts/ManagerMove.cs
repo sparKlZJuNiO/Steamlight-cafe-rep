@@ -26,11 +26,17 @@ public class ManagerMove : MonoBehaviour
         {
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
         }
+        if (plr.GetComponent<Player>().managerBool1 == true)
+        {
+            speed = 5.21f;
+            rb.position = Vector2.MoveTowards(rb.position, plr.transform.position, speed * Time.deltaTime);
+            rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (timer <= 2.3f && plr.GetComponent<Player>().isMoving == true)
+        if (timer <= 2.3f && plr.GetComponent<Player>().isMoving == true && plr.GetComponent<Player>().managerBool1 == false)
         {
             rb.position = Vector2.MoveTowards(rb.position, pointB.transform.position, speed * Time.deltaTime);
             // position.z = -0.6f; 
@@ -39,7 +45,8 @@ public class ManagerMove : MonoBehaviour
             timer += Time.deltaTime;
             anim.SetBool("walking", true);
         }
-        else if (timer >= 2.3f)
+
+        else if (timer >= 2.3f && plr.GetComponent<Player>().managerBool1 == false)
         {
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;

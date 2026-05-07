@@ -10,7 +10,7 @@ public class Dialogue : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] public TextMeshProUGUI text2;
-    [SerializeField] GameObject textObject;
+    [SerializeField] public GameObject textObject;
     GameObject plr;
     public GameObject[] NPCs;
    public bool dialogueToggle;
