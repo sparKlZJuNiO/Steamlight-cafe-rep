@@ -28,8 +28,8 @@ public class ManagerMove : MonoBehaviour
         }
         if (plr.GetComponent<Player>().managerBool1 == true)
         {
-            speed = 5.21f;
-            rb.position = Vector2.MoveTowards(rb.position, plr.transform.position, speed * Time.deltaTime);
+            speed = 0.21f;
+            //rb.position = Vector2.MoveTowards(rb.position, plr.transform.position, speed * Time.deltaTime);  // Will be checked
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
         }
     }

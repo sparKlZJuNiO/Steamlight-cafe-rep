@@ -146,8 +146,14 @@ public class Dialogue : MonoBehaviour
             assignedTask = false;
             dialogue2 = true;
         }
-
-        if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
+        if (value2 == true && text2.text == "Manager: Erm...yes...yes..Just mad about these people...they always present nice. Press E to Continue" && tick5 == true)
+        {
+            if (wait <= 2.3f)
+            {
+                text2.text = "Manager: get back to work..";
+            }
+        }
+            if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
         {
             text2.text = "Woman went to the restroom huh..";
             value = false;

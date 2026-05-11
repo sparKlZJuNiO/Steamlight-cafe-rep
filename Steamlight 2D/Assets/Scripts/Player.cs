@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     bool value1;
     bool value2;
     bool value3;
-    [SerializeField] float timer = 7f;
+    [SerializeField] public float timer = 7f;
     GameObject manager;
     [SerializeField] bool doNotMove;
     [SerializeField] GameObject waiter2;
