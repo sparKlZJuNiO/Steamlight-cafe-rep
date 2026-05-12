@@ -14,6 +14,7 @@ TagManager:
   - Manager
   - ManagerPoint
   - Door
+  - Trigger4
   layers:
   - Default
   - TransparentFX

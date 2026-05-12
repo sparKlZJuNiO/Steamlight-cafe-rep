@@ -24,10 +24,12 @@ public class Player : MonoBehaviour
     [SerializeField] float health = 100;
     bool isPaused = false;
     [SerializeField] GameObject filter;
+
     GameObject[] autoMoveNPCs;
     [SerializeField] public string yourName;
     [SerializeField] GameObject coffeeMachinePointB;
     [SerializeField] GameObject managerPointA;
+    [SerializeField] GameObject pointD;
     [SerializeField] GameObject waiterLinePointB;
     [SerializeField] GameObject arrowObject;
     [SerializeField] float offset;
@@ -353,6 +355,26 @@ public class Player : MonoBehaviour
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
                 newPoint = true;
                 door.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
+            if (plr.GetComponent<Dialogue>().tick6 == true)
+            {
+                float xDiff2 = pointD.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = pointD.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
+            if (plr.GetComponent<Dialogue>().tick6 == true && plr.GetComponent<Dialogue>().dialogue3 == true)
+            {
+                float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
         }
     }

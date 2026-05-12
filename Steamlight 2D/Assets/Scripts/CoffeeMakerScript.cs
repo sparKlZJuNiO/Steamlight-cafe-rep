@@ -27,6 +27,13 @@ public class CoffeeMakerScript : MonoBehaviour
                 image.enabled = true;
             }
         }
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true)
+        {
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = true;
+            }
+        }
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true && blueColour == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
@@ -37,6 +44,19 @@ public class CoffeeMakerScript : MonoBehaviour
             {
                 image.enabled = false;
             }
+        }
+
+        if (waitTime < 1)
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
+            this.gameObject.GetComponent<Animator>().SetBool("Done", false);
+            waitTime = 10;
+            plr.GetComponent<Dialogue>().assignedTask = false;
+            coffeeGiven = true;
+        }
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
         }
 
         if (waitTime < 1)
@@ -67,10 +87,34 @@ public class CoffeeMakerScript : MonoBehaviour
             waitTime = 10;
             coffeeGiven = true;
         }
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = false;
+            }
+        }
+        if (waitTime < 1 && plr.GetComponent<Dialogue>().dialogue3 == true)
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
+            this.gameObject.GetComponent<Animator>().SetBool("Done", false);
+            plr.GetComponent<Dialogue>().assignedTask = false;
+            waitTime = 10;
+            coffeeGiven = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true)
+        {
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = false;
+            }
+        }
+
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true)
         {
             foreach (Image image in CoffeeColours)
             {
@@ -168,6 +212,11 @@ public class CoffeeMakerScript : MonoBehaviour
         {
             plr.GetComponent<Animator>().SetBool("serving", true);
             plr.GetComponent<Animator>().SetBool("blue", true);
+        }
+        if (coffeeGiven == true && plr.GetComponent<Dialogue>().dialogue3 == false)
+        {
+            plr.GetComponent<Animator>().SetBool("serving", true);
+            plr.GetComponent<Animator>().SetBool("red", true);
         }
     }
 }
