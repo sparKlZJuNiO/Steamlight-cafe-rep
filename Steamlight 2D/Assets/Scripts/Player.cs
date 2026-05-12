@@ -358,6 +358,7 @@ public class Player : MonoBehaviour
             }
             if (plr.GetComponent<Dialogue>().tick6 == true)
             {
+                plr.GetComponent<Animator>().SetBool("serving", false);
                 float xDiff2 = pointD.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = pointD.transform.position.y - arrowObject.transform.position.y;
 

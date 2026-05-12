@@ -186,6 +186,7 @@ public class Dialogue : MonoBehaviour
             if (wait <= 2.3f)
             {
                 text2.text = "Hey, can I make another order? Can I have red cappuccino to go please? Thank you.";
+                assignedTask2 = true;
             }
         }
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)

@@ -4684,8 +4684,10 @@ MonoBehaviour:
   tick5: 0
   tick6: 0
   dialogue2: 0
+  dialogue3: 0
   wait: 5
   assignedTask: 0
+  assignedTask2: 0
   coffeeCup: {fileID: 599222648}
 --- !u!1 &308965841
 GameObject:
@@ -9024,7 +9026,7 @@ Transform:
   m_GameObject: {fileID: 669492265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.21, y: -3.89, z: -5.84}
+  m_LocalPosition: {x: -14.03, y: -3.89, z: -5.84}
   m_LocalScale: {x: 0.42548, y: 0.42548, z: 0.42548}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16482,7 +16484,7 @@ Transform:
   m_GameObject: {fileID: 1096526513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.71, y: -3.84, z: -2.44}
+  m_LocalPosition: {x: -12.21, y: -3.84, z: -2.44}
   m_LocalScale: {x: 0.40269956, y: 0.40269956, z: 0.40269956}
   m_ConstrainProportionsScale: 0
   m_Children:
