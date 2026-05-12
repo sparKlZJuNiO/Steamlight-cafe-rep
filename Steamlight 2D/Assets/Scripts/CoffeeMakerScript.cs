@@ -8,9 +8,11 @@ public class CoffeeMakerScript : MonoBehaviour
     GameObject plr;
     [SerializeField] float waitTime = 10;
     [SerializeField] public bool coffeeGiven;
+    [SerializeField] public bool coffeeGiven2;
     float color = 3f;
     [SerializeField] float stopValue;
     [SerializeField] GameObject NPC;
+    [SerializeField] GameObject NPC2;
     [SerializeField] GameObject[] chairs;
     [SerializeField] Image[] CoffeeColours;
     bool redColour;
@@ -45,7 +47,14 @@ public class CoffeeMakerScript : MonoBehaviour
                 image.enabled = false;
             }
         }
-
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
+        {
+            NPC2.SetActive(false);
+            foreach (Image image in CoffeeColours)
+            {
+                image.enabled = false;
+            }
+        }
         if (waitTime < 1)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
@@ -59,13 +68,13 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
         }
 
-        if (waitTime < 1)
+        if (waitTime < 1 && redColour == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
             waitTime = 10;
-            plr.GetComponent<Dialogue>().assignedTask = false;
-            coffeeGiven = true;
+            plr.GetComponent<Dialogue>().assignedTask2 = false;
+            coffeeGiven2 = true;
         }
     }
 
@@ -99,9 +108,9 @@ public class CoffeeMakerScript : MonoBehaviour
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
-            plr.GetComponent<Dialogue>().assignedTask = false;
+            plr.GetComponent<Dialogue>().assignedTask2 = false;
             waitTime = 10;
-            coffeeGiven = true;
+            coffeeGiven2 = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -208,15 +217,17 @@ public class CoffeeMakerScript : MonoBehaviour
                 }
             }
         }
-        if (coffeeGiven == true && plr.GetComponent<Dialogue>().tick2 == false)
+        if (coffeeGiven == true && plr.GetComponent<Dialogue>().tick2 == false && plr.GetComponent<Dialogue>().dialogue3 == false)
         {
             plr.GetComponent<Animator>().SetBool("serving", true);
             plr.GetComponent<Animator>().SetBool("blue", true);
         }
-        if (coffeeGiven == true && plr.GetComponent<Dialogue>().dialogue3 == false)
+        if (coffeeGiven == true && plr.GetComponent<Dialogue>().dialogue3 == true)
         {
             plr.GetComponent<Animator>().SetBool("serving", true);
             plr.GetComponent<Animator>().SetBool("red", true);
+            plr.GetComponent<Animator>().SetBool("blue", false);
+            plr.GetComponent<Animator>().SetBool("green", false);
         }
     }
 }

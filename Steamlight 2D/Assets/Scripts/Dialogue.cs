@@ -28,6 +28,7 @@ public class Dialogue : MonoBehaviour
     public bool assignedTask2;
     GameObject coffeeMachine;
     [SerializeField] GameObject coffeeCup;
+    [SerializeField] GameObject coffeeCupRed;
 
     private void Awake() // Before initialization, good when the game is not loaded in
     {
@@ -189,13 +190,19 @@ public class Dialogue : MonoBehaviour
                 assignedTask2 = true;
             }
         }
-        if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true)
+        if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true && coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven2 == false && value3 == false)
         {
             text2.text = "Woman went to the restroom huh..";
             value = false;
             tick = false;
             coffeeCup.SetActive(true);
             tick2 = true;
+            plr.GetComponent<Animator>().SetBool("serving", false);
+        }
+        if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven2 == true && value3 == true)
+        {
+            text2.text = "Manager: Coffee work!";
+            coffeeCupRed.SetActive(true);
             plr.GetComponent<Animator>().SetBool("serving", false);
         }
     }

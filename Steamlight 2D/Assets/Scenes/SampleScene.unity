@@ -4689,6 +4689,7 @@ MonoBehaviour:
   assignedTask: 0
   assignedTask2: 0
   coffeeCup: {fileID: 599222648}
+  coffeeCupRed: {fileID: 1565822671}
 --- !u!1 &308965841
 GameObject:
   m_ObjectHideFlags: 0
@@ -12101,7 +12102,7 @@ Transform:
   m_GameObject: {fileID: 816012487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.62, y: -4.62, z: -3.18}
+  m_LocalPosition: {x: -5.18, y: -4.66, z: -3.18}
   m_LocalScale: {x: 0.15147, y: 0.15147, z: 0.15147}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20748,8 +20749,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 10
   coffeeGiven: 0
+  coffeeGiven2: 0
   stopValue: 0.99
   NPC: {fileID: 754227280}
+  NPC2: {fileID: 517221484}
   chairs:
   - {fileID: 1573794611}
   - {fileID: 1774445206}
@@ -24122,6 +24125,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.3017564, y: 63.490967}
   m_EdgeRadius: 0
+--- !u!1 &1565822671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7365402715402187860, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
+  m_PrefabInstance: {fileID: 8586588114789069032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1572265915
 GameObject:
   m_ObjectHideFlags: 0
@@ -32626,11 +32634,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4985090399779369395, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.18
+      value: -5.84
       objectReference: {fileID: 0}
     - target: {fileID: 4985090399779369395, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.62
+      value: -4.59
       objectReference: {fileID: 0}
     - target: {fileID: 4985090399779369395, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32666,7 +32674,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365402715402187860, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
       propertyPath: m_Name
-      value: Coffee (3)
+      value: CoffeeRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365402715402187860, guid: 6836ac7c91ea98844848a3b549fe900b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

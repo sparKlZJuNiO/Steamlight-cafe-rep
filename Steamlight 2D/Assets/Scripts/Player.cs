@@ -210,6 +210,7 @@ public class Player : MonoBehaviour
             {
                 value2 = true;
             }
+     
         if (value2 == true && plr.GetComponent<Dialogue>().text2.text == "Manager: Erm...yes...yes..Just mad about these people...they always present nice. Press E to Continue" && plr.GetComponent<Dialogue>().tick5 == true)
         {
             manager.GetComponent<Animator>().SetBool("corrupted", false);
@@ -247,7 +248,7 @@ public class Player : MonoBehaviour
         if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && checkpointTick.GetComponent<Image>().enabled == false)
         {
             menuBackground.SetActive(true);
-            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, you look different..";
+            menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, your new and not from here..";
             timer -= Time.deltaTime;
         }
         if (timer >= 5 && coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true)
@@ -261,7 +262,7 @@ public class Player : MonoBehaviour
         }
         if (timer <= -3f && checkpointTick.GetComponent<Image>().enabled == false)
         {
-            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Oklahoma...";
+            menuText.GetComponent<TextMeshProUGUI>().text = yourName + ":Yes and I'm from Oklahoma...";
         }
         if (timer <= -6f && checkpointTick.GetComponent<Image>().enabled == false)
         {
@@ -371,6 +372,16 @@ public class Player : MonoBehaviour
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
+            if (plr.GetComponent<Animator>().GetBool("red") == true && plr.GetComponent<Dialogue>().dialogue3 == true)
+            {
+                float xDiff2 = pointD.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = pointD.transform.position.y - arrowObject.transform.position.y;
 
                 float radians2 = Mathf.Atan2(yDiff2, xDiff2);
                 float degrees2 = radians2 * Mathf.Rad2Deg;
