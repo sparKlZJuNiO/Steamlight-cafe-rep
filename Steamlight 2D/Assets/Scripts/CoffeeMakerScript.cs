@@ -68,7 +68,7 @@ public class CoffeeMakerScript : MonoBehaviour
             }
 
         }
-        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
         }
@@ -79,12 +79,7 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
             waitTime = 10;
             plr.GetComponent<Dialogue>().assignedTask2 = false;
-            if (plr.GetComponent<Dialogue>().assignedTask2 == true)
-            {
                 coffeeGiven2 = true;
-                coffeeGiven = false;
-            }
-
         }
     }
 
@@ -125,6 +120,7 @@ public class CoffeeMakerScript : MonoBehaviour
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
+            plr.GetComponent<Player>().menuBackground.SetActive(false);
             plr.GetComponent<Dialogue>().assignedTask2 = false;
             waitTime = 10;
             coffeeGiven = true;
@@ -140,6 +136,7 @@ public class CoffeeMakerScript : MonoBehaviour
     {
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true)
         {
+            plr.GetComponent<Player>().menuBackground.SetActive(false);
             foreach (Image image in CoffeeColours)
             {
                 image.enabled = false;
@@ -148,6 +145,7 @@ public class CoffeeMakerScript : MonoBehaviour
 
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true)
         {
+            plr.GetComponent<Player>().menuBackground.SetActive(false);
             foreach (Image image in CoffeeColours)
             {
                 image.enabled = false;
@@ -251,6 +249,7 @@ public class CoffeeMakerScript : MonoBehaviour
             plr.GetComponent<Animator>().SetBool("red", true);
             plr.GetComponent<Animator>().SetBool("blue", false);
             plr.GetComponent<Animator>().SetBool("green", false);
+            plr.GetComponent<Player>().menuBackground.SetActive(false);
         }
     }
 }

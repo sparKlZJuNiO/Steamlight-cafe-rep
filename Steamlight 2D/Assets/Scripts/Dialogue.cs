@@ -224,7 +224,6 @@ public class Dialogue : MonoBehaviour
             if (wait <= 2.3f)
             {
                 text2.text = "Hey I have a little thing that you could help me with?";
-                assignedTask3 = true;
             }
         }
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true && coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven2 == false && value3 == false)
@@ -242,6 +241,8 @@ public class Dialogue : MonoBehaviour
             coffeeCupRed.SetActive(true);
             plr.GetComponent<Animator>().SetBool("serving", false);
             assignedTask2 = false;
+            assignedTask3 = true;
+            plr.GetComponent<Player>().menuBackground.SetActive(false);
         }
     }
 }

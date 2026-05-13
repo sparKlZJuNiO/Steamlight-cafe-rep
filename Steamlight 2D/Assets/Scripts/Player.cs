@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     [SerializeField] Image checkMark;
     [SerializeField] TextMeshProUGUI textPopup;
     [SerializeField] GameObject menuText;
-    [SerializeField] GameObject menuBackground;
+    [SerializeField] public GameObject menuBackground;
     [SerializeField] Slider soundSlider;
     [SerializeField] AudioMixer masterMixer;
     [SerializeField] Toggle togglePart;
@@ -323,7 +323,7 @@ public class Player : MonoBehaviour
             }
 
 
-            if (this.GetComponent<Dialogue>().assignedTask == true && newPoint == false)
+            if (this.GetComponent<Dialogue>().assignedTask == true && newPoint == false && plr.GetComponent<Dialogue>().tick7 == false && this.GetComponent<Dialogue>().assignedTask3 == false)
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
@@ -374,7 +374,7 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
-            if (plr.GetComponent<Dialogue>().tick7 == true)
+            if (plr.GetComponent<Dialogue>().tick7 == true || this.GetComponent<Dialogue>().value4 == true || this.GetComponent<Dialogue>().assignedTask3 == true)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
                 float xDiff2 = pointE.transform.position.x - arrowObject.transform.position.x;
@@ -385,7 +385,7 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
-            if (plr.GetComponent<Dialogue>().tick6 == true && plr.GetComponent<Dialogue>().dialogue3 == true)
+            if (plr.GetComponent<Dialogue>().tick6 == true && plr.GetComponent<Dialogue>().dialogue3 == true && plr.GetComponent<Dialogue>().tick7 == false && this.GetComponent<Dialogue>().assignedTask3 == false)
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
