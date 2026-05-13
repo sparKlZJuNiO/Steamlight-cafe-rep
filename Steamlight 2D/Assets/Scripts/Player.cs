@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject coffeeMachinePointB;
     [SerializeField] GameObject managerPointA;
     [SerializeField] GameObject pointD;
+    [SerializeField] GameObject pointE;
     [SerializeField] GameObject waiterLinePointB;
     [SerializeField] GameObject arrowObject;
     [SerializeField] float offset;
@@ -255,6 +256,11 @@ public class Player : MonoBehaviour
         {
             timer = 0;
         }
+        if (plr.GetComponent<Dialogue>().assignedTask2 == false)
+        {
+            plr.GetComponent<Animator>().SetBool("serving", false);
+            plr.GetComponent<Animator>().SetBool("red", false);
+        }
         if (coffeeMachine.GetComponent<Animator>().GetBool("Done") == true || coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && menuText.GetComponent<TextMeshProUGUI>().text == "Second Waiter: Yea.. Was there for years..")
         {
             menuBackground.SetActive(false);
@@ -362,6 +368,17 @@ public class Player : MonoBehaviour
                 plr.GetComponent<Animator>().SetBool("serving", false);
                 float xDiff2 = pointD.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = pointD.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
+            if (plr.GetComponent<Dialogue>().tick7 == true)
+            {
+                plr.GetComponent<Animator>().SetBool("serving", false);
+                float xDiff2 = pointE.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = pointE.transform.position.y - arrowObject.transform.position.y;
 
                 float radians2 = Mathf.Atan2(yDiff2, xDiff2);
                 float degrees2 = radians2 * Mathf.Rad2Deg;

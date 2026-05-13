@@ -49,7 +49,6 @@ public class CoffeeMakerScript : MonoBehaviour
         }
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
         {
-            NPC2.SetActive(false);
             foreach (Image image in CoffeeColours)
             {
                 image.enabled = false;
@@ -62,6 +61,12 @@ public class CoffeeMakerScript : MonoBehaviour
             waitTime = 10;
             plr.GetComponent<Dialogue>().assignedTask = false;
             coffeeGiven = true;
+            if (plr.GetComponent<Dialogue>().assignedTask2 == true)
+            {
+                coffeeGiven2 = true;
+                coffeeGiven = false;
+            }
+
         }
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
         {
@@ -74,7 +79,12 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
             waitTime = 10;
             plr.GetComponent<Dialogue>().assignedTask2 = false;
-            coffeeGiven2 = true;
+            if (plr.GetComponent<Dialogue>().assignedTask2 == true)
+            {
+                coffeeGiven2 = true;
+                coffeeGiven = false;
+            }
+
         }
     }
 
@@ -95,6 +105,13 @@ public class CoffeeMakerScript : MonoBehaviour
             plr.GetComponent<Dialogue>().assignedTask = false;
             waitTime = 10;
             coffeeGiven = true;
+            if (plr.GetComponent<Dialogue>().assignedTask2 == true)
+            {
+                coffeeGiven2 = true;
+                coffeeGiven = false;
+            }
+         
+          
         }
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
         {
@@ -110,7 +127,13 @@ public class CoffeeMakerScript : MonoBehaviour
             this.gameObject.GetComponent<Animator>().SetBool("Done", false);
             plr.GetComponent<Dialogue>().assignedTask2 = false;
             waitTime = 10;
-            coffeeGiven2 = true;
+            coffeeGiven = true;
+            if (plr.GetComponent<Dialogue>().assignedTask2 == true)
+            {
+                coffeeGiven2 = true;
+                coffeeGiven = false;
+            }
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -222,7 +245,7 @@ public class CoffeeMakerScript : MonoBehaviour
             plr.GetComponent<Animator>().SetBool("serving", true);
             plr.GetComponent<Animator>().SetBool("blue", true);
         }
-        if (coffeeGiven == true && plr.GetComponent<Dialogue>().dialogue3 == true)
+        if (coffeeGiven2 == true && plr.GetComponent<Dialogue>().dialogue3 == true && plr.GetComponent<Dialogue>().assignedTask2 == true)
         {
             plr.GetComponent<Animator>().SetBool("serving", true);
             plr.GetComponent<Animator>().SetBool("red", true);
