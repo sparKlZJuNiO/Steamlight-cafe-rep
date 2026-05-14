@@ -33,6 +33,7 @@ public class Dialogue : MonoBehaviour
     GameObject coffeeMachine;
     [SerializeField] GameObject coffeeCup;
     [SerializeField] GameObject coffeeCupRed;
+    [SerializeField] GameObject npc3;
 
     private void Awake() // Before initialization, good when the game is not loaded in
     {
@@ -168,7 +169,7 @@ public class Dialogue : MonoBehaviour
         }
         if (tick7 == true && value4 == true && dialogue4 == false)
         {
-            text2.text = "Hey, I would like to file a complaint. About the service here. I had to wait for nearly an hour just for a coffee.";
+            text2.text = "Hey, I would like to file a complaint. About the service here. I had to wait for nearly an hour just for a coffee. Press E to continue";
             tick5 = false;
             tick4 = false;
             tick3 = false;
@@ -218,12 +219,13 @@ public class Dialogue : MonoBehaviour
             }
         }
 
-        if (value4 == true && text2.text == "Hey, I would like to file a complaint. About the service here. I had to wait for nearly an hour just for a coffee." && tick7 == true)
+        if (value4 == true && text2.text == "Hey, I would like to file a complaint. About the service here. I had to wait for nearly an hour just for a coffee. Press E to continue" && tick7 == true)
         {
             dialogue4 = true;
             if (wait <= 2.3f)
             {
-                text2.text = "Hey I have a little thing that you could help me with?";
+                text2.text = plr.GetComponent<Player>().yourName + ": Noo.. No..uh... ugh.. go ahead then...";
+                npc3.SetActive(false);
             }
         }
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true && coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven2 == false && value3 == false)
@@ -241,6 +243,7 @@ public class Dialogue : MonoBehaviour
             coffeeCupRed.SetActive(true);
             plr.GetComponent<Animator>().SetBool("serving", false);
             assignedTask2 = false;
+            tick7 = true;
             assignedTask3 = true;
             plr.GetComponent<Player>().menuBackground.SetActive(false);
         }

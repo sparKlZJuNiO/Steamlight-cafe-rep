@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 718f4036e92ea1c4b907f33980119ee2
+guid: 1eaf61a7ce83bd842ae5fc9227fc053b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 964799665122008799
-    second: Npc 2 idle sprite sheet_0
+      213: -3736426422608006918
+    second: Manager walking animation (horror ver) (redone) sprite sheet_0
   - first:
-      213: -5593058681437648126
-    second: Npc 2 idle sprite sheet_1
+      213: 185537084691842098
+    second: Manager walking animation (horror ver) (redone) sprite sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Npc 2 idle sprite sheet_0
+      name: Manager walking animation (horror ver) (redone) sprite sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 500
-        height: 500
+        x: 149
+        y: 89
+        width: 202
+        height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fde53070f28a36d00800000000000000
-      internalID: 964799665122008799
+      spriteID: af0f01f07fb852cc0800000000000000
+      internalID: -3736426422608006918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Npc 2 idle sprite sheet_1
+      name: Manager walking animation (horror ver) (redone) sprite sheet_1
       rect:
         serializedVersion: 2
-        x: 500
-        y: 0
-        width: 500
-        height: 500
+        x: 659
+        y: 89
+        width: 202
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20b8ef433c67162b0800000000000000
-      internalID: -5593058681437648126
+      spriteID: 23408b9def8239200800000000000000
+      internalID: 185537084691842098
       vertices: []
       indices: 
       edges: []
@@ -189,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8ec69ae431195e54fa121f6bc8cd9ed2
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -197,12 +197,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":500.0,"y":500.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Npc 2 idle sprite sheet_0: 964799665122008799
-      Npc 2 idle sprite sheet_1: -5593058681437648126
+      Manager walking animation (horror ver) (redone) sprite sheet_0: -3736426422608006918
+      Manager walking animation (horror ver) (redone) sprite sheet_1: 185537084691842098
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

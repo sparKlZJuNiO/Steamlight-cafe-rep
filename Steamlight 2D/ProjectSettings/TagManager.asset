@@ -16,6 +16,7 @@ TagManager:
   - Door
   - Trigger4
   - Trigger5
+  - Trigger6
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: lady new idle anim
-  m_Speed: 1
+  m_Speed: 0.68
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2859855390963880571}
@@ -60,7 +60,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: lady new walk anim
-  m_Speed: 1
+  m_Speed: 0.68
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4695327045606237625}

@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: npc 2 walk anim
-  m_Speed: 1
+  m_Speed: 0.68
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3932812017227192240}
@@ -113,7 +113,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: NPC 2 idle animm
-  m_Speed: 1
+  m_Speed: 0.68
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3354147171355829212}

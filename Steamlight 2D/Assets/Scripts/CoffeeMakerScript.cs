@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D.IK;
 using UnityEngine.UI;
@@ -15,9 +16,9 @@ public class CoffeeMakerScript : MonoBehaviour
     [SerializeField] GameObject NPC2;
     [SerializeField] GameObject[] chairs;
     [SerializeField] Image[] CoffeeColours;
-    bool redColour;
-    bool greenColour;
-    bool blueColour;
+   public bool redColour;
+    public bool greenColour;
+    public bool blueColour;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,7 +69,7 @@ public class CoffeeMakerScript : MonoBehaviour
             }
 
         }
-        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true)
+        if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask2 == true && redColour == true)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", true);
         }
@@ -82,7 +83,6 @@ public class CoffeeMakerScript : MonoBehaviour
                 coffeeGiven2 = true;
         }
     }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && plr.GetComponent<Dialogue>().assignedTask == true && blueColour == true)
@@ -202,6 +202,10 @@ public class CoffeeMakerScript : MonoBehaviour
             if (waitTime < 2)
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.8902f, 0.7490f); // White
+            }
+            if (plr.GetComponent<Dialogue>().assignedTask2 == false)
+            {
+                redColour = false;
             }
             /*  switch (waitTime)
               {

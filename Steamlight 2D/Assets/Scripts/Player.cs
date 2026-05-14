@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
             managerBool1 = true;
             //  speed = 0;
             checkpointCross.GetComponent<Image>().enabled = false;
-            Debug.Log("Check");
+           // Debug.Log("Check");
             //menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?";
             dialogue2 = false;
             checkpointTick.GetComponent<Image>().enabled = false;
@@ -246,7 +246,7 @@ public class Player : MonoBehaviour
             menuText.GetComponent<TextMeshProUGUI>().text = yourName + ": Are you okay manager?, Press E to Continue";
             timer -= Time.deltaTime;
         }
-        if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && checkpointTick.GetComponent<Image>().enabled == false)
+        if (coffeeMachine.GetComponent<Animator>().GetBool("Wait") == true && checkpointTick.GetComponent<Image>().enabled == false && plr.GetComponent<Dialogue>().assignedTask == true)
         {
             menuBackground.SetActive(true);
             menuText.GetComponent<TextMeshProUGUI>().text = "Second Waiter: Hey, your new and not from here..";
