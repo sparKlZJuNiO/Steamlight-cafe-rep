@@ -9,6 +9,7 @@ public class Dialogue : MonoBehaviour
     public bool value2 = false;
     public bool value3 = false;
     public bool value4 = false;
+    public bool value5 = false;
 
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] public TextMeshProUGUI text2;
@@ -23,16 +24,20 @@ public class Dialogue : MonoBehaviour
     public bool tick5;
     public bool tick6;
     public bool tick7;
+    public bool tick8;
     public bool dialogue2;
     public bool dialogue3;
     public bool dialogue4;
+    public bool dialogue5;
     [SerializeField] float wait = 1.6f;
     public bool assignedTask;
     public bool assignedTask2;
     public bool assignedTask3;
+    public bool assignedTask4;
     GameObject coffeeMachine;
     [SerializeField] GameObject coffeeCup;
     [SerializeField] GameObject coffeeCupRed;
+    [SerializeField] GameObject coffeeCupGreen;
     [SerializeField] GameObject npc3;
 
     private void Awake() // Before initialization, good when the game is not loaded in
@@ -70,6 +75,11 @@ public class Dialogue : MonoBehaviour
             value4 = true;
             textObject.SetActive(true);
         }
+        if (collision.CompareTag("Trigger6") && tick8 == true)
+        {
+            value5 = true;
+            textObject.SetActive(true);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -89,6 +99,10 @@ public class Dialogue : MonoBehaviour
         if (collision.CompareTag("Trigger5") && tick7 == true)
         {
             value4 = true;
+        }
+        if (collision.CompareTag("Trigger6") && tick8 == true)
+        {
+            value5 = true;
         }
     }
 
@@ -112,6 +126,11 @@ public class Dialogue : MonoBehaviour
         if (collision.CompareTag("Trigger5") && tick7 == true)
         {
             value4 = false;
+            textObject.SetActive(false);
+        }
+        if (collision.CompareTag("Trigger6"))
+        {
+            value5 = false;
             textObject.SetActive(false);
         }
     }
@@ -176,6 +195,18 @@ public class Dialogue : MonoBehaviour
             tick2 = false;
             tick = false;
         }
+        if (tick8 == true && value5 == true && dialogue5 == false)
+        {
+            text2.text = "I would like to have a green chocolate, thank you. Press E to continue";
+            tick7 = false;
+            assignedTask4 = true;
+            tick6 = false;
+            tick5 = false;
+            tick4 = false;
+            tick3 = false;
+            tick2 = false;
+            tick = false;
+        }
     }
 
     public void Interact(InputAction.CallbackContext ctx)
@@ -226,6 +257,15 @@ public class Dialogue : MonoBehaviour
             {
                 text2.text = plr.GetComponent<Player>().yourName + ": Noo.. No..uh... ugh.. go ahead then...";
                 npc3.SetActive(false);
+                tick8 = true;
+            }
+        }
+        if (value5 == true && text2.text == "I would like to have a green chocolate, thank you. Press E to continue" && tick8 == true)
+        {
+            dialogue5 = true;
+            if (wait <= 2.3f)
+            {
+                text2.text = plr.GetComponent<Player>().yourName + ": Coming right up mister..";
             }
         }
         if (coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven == true && coffeeMachine.GetComponent<CoffeeMakerScript>().coffeeGiven2 == false && value3 == false)
@@ -245,6 +285,15 @@ public class Dialogue : MonoBehaviour
             assignedTask2 = false;
             tick7 = true;
             assignedTask3 = true;
+            plr.GetComponent<Player>().menuBackground.SetActive(false);
+        }
+        if (assignedTask4 == true && plr.GetComponent<Animator>().GetBool("serving") == true)
+        {
+            text2.text = plr.GetComponent<Player>().yourName + ": Here you go..";
+            coffeeCupGreen.SetActive(true);
+            plr.GetComponent<Animator>().SetBool("serving", false);
+            assignedTask4 = false;
+            tick8 = true;
             plr.GetComponent<Player>().menuBackground.SetActive(false);
         }
     }

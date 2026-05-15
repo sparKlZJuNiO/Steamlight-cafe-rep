@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject managerPointA;
     [SerializeField] GameObject pointD;
     [SerializeField] GameObject pointE;
+    [SerializeField] GameObject pointF;
     [SerializeField] GameObject waiterLinePointB;
     [SerializeField] GameObject arrowObject;
     [SerializeField] float offset;
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
     bool managerMoveBool;
     [SerializeField] GameObject endScreen;
     [SerializeField] public bool managerBool1;
+    [SerializeField] bool touchEnd;
 
     [Header("UI")]
     [SerializeField] GameObject canvas;
@@ -385,7 +387,28 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
+            if (plr.GetComponent<Dialogue>().tick8 == true || this.GetComponent<Dialogue>().value5 == true || this.GetComponent<Dialogue>().assignedTask4 == true) // point f
+            {
+                plr.GetComponent<Animator>().SetBool("serving", false);
+                float xDiff2 = pointF.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = pointF.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
             if (plr.GetComponent<Dialogue>().tick6 == true && plr.GetComponent<Dialogue>().dialogue3 == true && plr.GetComponent<Dialogue>().tick7 == false && this.GetComponent<Dialogue>().assignedTask3 == false)
+            {
+                float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
+                float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
+
+                float radians2 = Mathf.Atan2(yDiff2, xDiff2);
+                float degrees2 = radians2 * Mathf.Rad2Deg;
+
+                arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
+            }
+            if (plr.GetComponent<Dialogue>().tick8 == true && plr.GetComponent<Dialogue>().dialogue5 == true && plr.GetComponent<Dialogue>().tick7 == false && this.GetComponent<Dialogue>().assignedTask4 == true)
             {
                 float xDiff2 = coffeeMachinePointB.transform.position.x - arrowObject.transform.position.x;
                 float yDiff2 = coffeeMachinePointB.transform.position.y - arrowObject.transform.position.y;
@@ -487,7 +510,7 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<Animator>().SetBool("open", true);
         }
-        if (collision.CompareTag("Manager"))
+        if (collision.CompareTag("Manager") && touchEnd == true)
         {
             endScreen.SetActive(true);
             collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;

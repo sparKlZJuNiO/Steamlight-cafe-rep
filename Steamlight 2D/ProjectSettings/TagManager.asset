@@ -17,6 +17,7 @@ TagManager:
   - Trigger4
   - Trigger5
   - Trigger6
+  - Trigger7
   layers:
   - Default
   - TransparentFX
