@@ -351,6 +351,7 @@ public class Player : MonoBehaviour
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees + offset);
             }
 
+
             if (plr.GetComponent<Dialogue>().tick2 == true && plr.GetComponent<Dialogue>().text2.text == "But, thank you for your order.." && plr.GetComponent<Dialogue>().value2 == false)
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
@@ -387,7 +388,7 @@ public class Player : MonoBehaviour
 
                 arrowObject.transform.rotation = Quaternion.Euler(0, 0, degrees2 + offset);
             }
-            if (plr.GetComponent<Dialogue>().tick8 == true || this.GetComponent<Dialogue>().value5 == true || this.GetComponent<Dialogue>().assignedTask4 == true) // point f
+            if (plr.GetComponent<Dialogue>().tick8 == true || this.GetComponent<Dialogue>().value5 == true || this.GetComponent<Dialogue>().assignedTask4 == true || plr.GetComponent<Animator>().GetBool("green") == true) // point f
             {
                 plr.GetComponent<Animator>().SetBool("serving", false);
                 float xDiff2 = pointF.transform.position.x - arrowObject.transform.position.x;

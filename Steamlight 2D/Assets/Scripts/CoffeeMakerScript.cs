@@ -283,7 +283,10 @@ public class CoffeeMakerScript : MonoBehaviour
 
             }
         }
-
+        if (plr.GetComponent<Dialogue>().assignedTask4 == true && greenColour == true)
+        {
+            coffeeGiven3 = true;
+        }
         if (waitTime <= 0)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Wait", false);
