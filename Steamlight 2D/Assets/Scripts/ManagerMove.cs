@@ -4,10 +4,11 @@ public class ManagerMove : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] GameObject pointB;
-    [SerializeField] float speed;
+    [SerializeField] public float speed;
     private Vector3 position;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float timer;
+    [SerializeField] public bool followPlayer;
     public bool npcValue = false;
     Animator anim;
     GameObject plr;
@@ -22,14 +23,8 @@ public class ManagerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (plr.GetComponent<Player>().isMoving == false)
+        if (plr.GetComponent<Player>().isMoving == false && followPlayer == false)
         {
-            rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
-        }
-        if (plr.GetComponent<Player>().managerBool1 == true)
-        {
-            speed = 0.21f;
-            //rb.position = Vector2.MoveTowards(rb.position, plr.transform.position, speed * Time.deltaTime);  // Will be checked
             rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
         }
     }
@@ -45,7 +40,12 @@ public class ManagerMove : MonoBehaviour
             timer += Time.deltaTime;
             anim.SetBool("walking", true);
         }
-
+        if (followPlayer == true)
+        {
+            rb.position = Vector2.MoveTowards(rb.position, plr.transform.position, speed * Time.deltaTime);  // Will be checked
+            anim.SetBool("evil", true);
+            plr.GetComponent<Player>().touchEnd = true; 
+        }
         else if (timer >= 2.3f && plr.GetComponent<Player>().managerBool1 == false)
         {
             rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;

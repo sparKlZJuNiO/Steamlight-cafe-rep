@@ -4672,6 +4672,7 @@ MonoBehaviour:
   door: {fileID: 1157446631}
   endScreen: {fileID: 1493582088}
   managerBool1: 0
+  touchEnd: 0
   canvas: {fileID: 1851279746}
   accessibilityCanvas: {fileID: 1811790077}
   optionsCanvas: {fileID: 407512436}
@@ -4740,6 +4741,7 @@ MonoBehaviour:
   coffeeCupRed: {fileID: 1565822671}
   coffeeCupGreen: {fileID: 1468370828}
   npc3: {fileID: 830142906}
+  manager: {fileID: 669492265}
 --- !u!1 &308965841
 GameObject:
   m_ObjectHideFlags: 0
@@ -9077,7 +9079,7 @@ GameObject:
   - component: {fileID: 669492271}
   - component: {fileID: 669492270}
   m_Layer: 0
-  m_Name: Manager Sprite - Nehan
+  m_Name: Manager Sprite
   m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9189,9 +9191,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointB: {fileID: 354578392}
-  speed: 0.25
+  speed: 1.22
   rb: {fileID: 669492271}
   timer: 0
+  followPlayer: 0
   npcValue: 0
 --- !u!61 &669492270
 BoxCollider2D:
@@ -20709,6 +20712,7 @@ MonoBehaviour:
   waitTime: 10
   coffeeGiven: 0
   coffeeGiven2: 0
+  coffeeGiven3: 0
   stopValue: 0.99
   NPC: {fileID: 754227280}
   NPC2: {fileID: 517221484}

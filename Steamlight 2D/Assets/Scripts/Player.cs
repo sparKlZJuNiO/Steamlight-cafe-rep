@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     bool managerMoveBool;
     [SerializeField] GameObject endScreen;
     [SerializeField] public bool managerBool1;
-    [SerializeField] bool touchEnd;
+    [SerializeField] public bool touchEnd;
 
     [Header("UI")]
     [SerializeField] GameObject canvas;

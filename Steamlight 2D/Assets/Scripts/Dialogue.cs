@@ -39,6 +39,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] GameObject coffeeCupRed;
     [SerializeField] GameObject coffeeCupGreen;
     [SerializeField] GameObject npc3;
+    [SerializeField] GameObject manager;
 
     private void Awake() // Before initialization, good when the game is not loaded in
     {
@@ -144,7 +145,7 @@ public class Dialogue : MonoBehaviour
                 tick = true;
                 dialogueToggle = true;
                 wait -= Time.deltaTime;
-                if (wait <= 2f && tick == true && tick5 == false && tick6 == false)
+                if (wait <= 2f && tick == true && tick5 == false && tick6 == false && tick8 == false)
                 {
                     text2.text = "PRESS E TO CONTINUE DIALOGUE";
                    // Debug.Log("DialogueDetect");
@@ -155,10 +156,9 @@ public class Dialogue : MonoBehaviour
                 tick = true;
                 dialogueToggle = true;
                 wait -= Time.deltaTime;
-                if (wait <= 2f && tick4 == true && tick5 == false && tick6 == false)
+                if (wait <= 2f && tick4 == true && tick5 == false && tick6 == false && tick8 == false)
                 {
                     text2.text = "PRESS E TO CONTINUE DIALOGUE";
-                   
                 }
             }
         }
@@ -177,6 +177,10 @@ public class Dialogue : MonoBehaviour
             dialogue2 = true;
             tick4 = false;
             
+        }
+        if (text2.text == plr.GetComponent<Player>().yourName + ": Here you go..")
+        {
+            manager.GetComponent<ManagerMove>().speed += Time.deltaTime;
         }
         if (tick6 == true && value3 == true && dialogue3 == false)
         {
@@ -295,6 +299,8 @@ public class Dialogue : MonoBehaviour
             assignedTask4 = false;
             tick8 = true;
             plr.GetComponent<Player>().menuBackground.SetActive(false);
+            manager.GetComponent<ManagerMove>().followPlayer = true;
+            
         }
     }
 }
